@@ -1,0 +1,12 @@
+%article
+  = render partial: 'head'
+
+  .panel
+    %ul.action-buttons.right
+      %li
+        = link_to "#{fa_icon('pencil fw')} bearbeiten".html_safe, edit_music_wishes_path, class: 'button'
+    - if @user.music_wishes.empty?
+      %i
+        Du hast dir noch keine Musik gewünscht.
+    = simple_format @user.music_wishes
+

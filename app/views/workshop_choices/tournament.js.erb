@@ -1,0 +1,2 @@
+$("<%= escape_javascript(render partial: 'tournament', locals: {tournament: @timeslot}) %>").replaceAll(".timeslot.timeslot-<%= @timeslot.id %>");
+$("<%= escape_javascript(render partial: 'sidebar') %>").replaceAll("#workshop-choices-sidebar");

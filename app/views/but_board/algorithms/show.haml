@@ -1,0 +1,81 @@
+- content_for :subtitle do
+  Der Algorithmus
+
+= link_to 'erneut berechnen', rerun_but_board_algorithm_path, method: 'post', class: 'button expand'
+
+%h2 Statistiken
+%ul.medium-block-grid-2(data-equalizer)
+  %li
+    .panel(data-equalizer-watch)
+      %h3 Zufriedenheit
+      - first = WorkshopChoice.first_choice.where(final: true).count
+      - second = WorkshopChoice.second_choice.where(final: true).count
+      - third = WorkshopChoice.third_choice.where(final: true).count
+      = pie_chart({ "Erstwahl" => first, "Zweitwahl" => second, "Drittwahl" => third})
+  %li
+    .panel(data-equalizer-watch)
+      %h3 Wahlbeteiligung
+      - all = ButRegistration.all.count
+      - voted = ButRegistration.joins(:workshop_choices).uniq.count
+      = pie_chart({"gewählt" => voted, "noch nicht gewählt" => all - voted})
+  %li
+
+%h2 Ergebnisse
+- for day, timeslots in Timeslot.workshop.order({start: :asc, end: :asc}).group_by { |ts| ts.start.to_date }
+  - weekday = l(day, format: :weekday)
+  %h3= l day, format: :weekday
+
+  - for workshop in timeslots.map(&:workshops).flatten.uniq { |w| w.id }
+    .panel
+      %h4
+        = workshop.title
+      %p
+        -unless workshop.helper_shift?
+          -if workshop.multiple_trainers?
+            = fa_icon 'users fw'
+          - else
+            = fa_icon 'user fw'
+          von #{workshop.human_trainers}
+          %br
+        - if workshop.timeslots.empty?
+          %i Für diesen Workshop steht noch keine Zeit fest
+        - else
+          = fa_icon 'clock-o fw'
+          = workshop.timeslots.map {|t| timeslot_title(t)}.join(' und ')
+          %br
+          = fa_icon 'empty fw', text: spaces_left_text(workshop.spaces_left)
+      - choices = workshop.workshop_choices.final_participants.joins(:but_registration).to_a
+      - trainers = workshop.workshop_choices.final_trainers.joins(:but_registration).to_a
+      - choices.sort! { |a, b| b.but_registration.karma <=> a.but_registration.karma }
+      - if choices.empty?
+        %p Es wurde niemand eingeteilt.
+      - else
+        %table(width="100%")
+          - trainers.each do |trainer|
+            %tr
+              %td
+              %td
+                %strong= trainer.but_registration.name
+              %td
+              %td= fa_icon('user fw', text: 'trainiert')
+
+          - choices.each.with_index do |choice, i|
+            %tr
+              %td= i+1
+              %td
+                %strong= choice.but_registration.name
+              %td #{choice.but_registration.karma} Karma
+              %td
+                - case
+                - when choice.trainer?
+                  = fa_icon('user fw')
+                  trainiert
+                - when choice.choice_type == 'first_choice'
+                  = fa_icon('smile-o fw')
+                  =t choice.choice_type
+                - when choice.choice_type == 'second_choice'
+                  = fa_icon('meh-o fw')
+                  =t choice.choice_type
+                - when choice.choice_type == 'third_choice'
+                  = fa_icon('frown-o fw')
+                  =t choice.choice_type

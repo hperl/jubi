@@ -1,0 +1,25 @@
+- content_for :topic do
+  Anmeldung
+
+%p.lead Hier erfährst du, wie man sich zum BUT anmelden kann.
+%p
+  %ol
+    %li
+      Um dich zum <strong>BUT anmelden</strong> zu können, musst du zunächst
+      ein
+      = succeed '.' do
+        %em= link_to 'Benutzerkonto registrieren', new_user_registration_path
+      Falls du bereits ein <strong>YFU Intranet-Konto</strong> hast, kannst du
+      dich direkt damit #{link_to 'anmelden', new_user_session_path}.
+    %li
+      Sobald du dich angemeldet hast, wirst du auf deine Profilseite
+      weitergeleitet. Dort kannst du eine neue BUT-Anmeldung anlegen.
+      %br/
+      <strong>Für Familien interessant:</strong> Pro Benutzerkonto können
+      mehrere BUT-Anmeldungen angelegt werden. Es braucht sich also nicht jedes
+      Familienmitglied ein eigenes Konto zu erstellen.
+    %li
+      Um mit deinen Lieblingsmenschen gemeinsam auf ein Zimmer zu kommen, kannst
+      du eine Gruppe anlegen. Wie das genau funktioniert steht in der
+      = succeed '.' do
+        = link_to 'Hilfe zu Gruppen', page_path('hilfe/gruppen')

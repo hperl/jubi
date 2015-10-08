@@ -1,0 +1,63 @@
+%ul.sidenav#workshop-choices-sidebar
+  %li.heading.cleafix
+    Karma
+  %li
+    %i= link_to('Wie wird das Karma berechnet?', page_path('hilfe/karma'))
+  = render partial: 'workshop_choices/karma'
+
+  - for day, timeslots in Timeslot.all.order(start: :asc).group_by { |ts| ts.start.to_date }
+    %li.heading=l day, format: :weekday
+    - for timeslot in timeslots.select { |ts| ts.workshop? || ts.helper_shift? || ts.tournament? }
+      - if timeslot.helper_shift? && current_user.registrations.joins(:helper_shift_timeslots).where(but_registrations_timeslots: {timeslot_id: timeslot.id}).count > 0
+        %li.subheading Helferschicht #{timeslot.name}
+        - for registration in current_user.registrations.payed
+          - if registration.helper_shift_timeslots.exists? timeslot
+            %li.text →&nbsp;&nbsp;#{registration.name} hilft mit
+      - elsif timeslot.workshop?
+        %li.subheading
+          %a(href="#ts-#{timeslot.id}")
+            Workshops
+            =l timeslot.start, format: :short_time
+            —
+            =l timeslot.end, format: :time
+        %li.text
+          - for registration in current_user.registrations.votable
+            - with_feature 'final_workshop_choices' do
+              →&nbsp;&nbsp;Einteilung für
+              = registration.name
+              %ul
+                %li= Workshop.joins(:workshop_choices, :timeslots).where(timeslots: {id: timeslot.id}, workshop_choices: { final: true, but_registration: registration}).first.try(:title) || 'Freizeit'
+
+            - without_feature 'final_workshop_choices' do
+              →&nbsp;&nbsp;Wahlen für
+              = registration.name
+              %ol
+                - ws1 = Workshop.joins(:workshop_choices, :timeslots).where(timeslots: {id: timeslot.id}, workshop_choices: { final: false, choice_type: WorkshopChoice.choice_types["first_choice"], but_registration: registration }).first
+                - ws2 = Workshop.joins(:workshop_choices, :timeslots).where(timeslots: {id: timeslot.id}, workshop_choices: { final: false, choice_type: WorkshopChoice.choice_types["second_choice"], but_registration: registration }).first
+                - ws3 = Workshop.joins(:workshop_choices, :timeslots).where(timeslots: {id: timeslot.id}, workshop_choices: { final: false, choice_type: WorkshopChoice.choice_types["third_choice"], but_registration: registration }).first
+
+                - for ws in [ws1, ws2, ws3]
+                  %li{:class => "workshop-#{ws.try(:id)}"}= ws.try(:title) || 'Freizeit'
+
+      - elsif timeslot.tournament?
+        %li.subheading
+          = timeslot.name
+          =l timeslot.start, format: :short_time
+          —
+          =l timeslot.end, format: :time
+        %li.text
+          - for registration in current_user.registrations.payed
+            - with_feature 'final_workshop_choices' do
+              →&nbsp;&nbsp;Einteilung für
+              = registration.name
+              %ul
+                %li= Workshop.joins(:workshop_choices, :timeslots).where(timeslots: {id: timeslot.id}, workshop_choices: { choice_type: WorkshopChoice.choice_types["first_choice"], but_registration: registration }).first.try(:title) || 'Freizeit'
+
+            - without_feature 'final_workshop_choices' do
+              →&nbsp;&nbsp;Wahl für
+              = registration.name
+              %ol
+                - ws1 = Workshop.joins(:workshop_choices, :timeslots).where(timeslots: {id: timeslot.id}, workshop_choices: { choice_type: WorkshopChoice.choice_types["first_choice"], but_registration: registration }).first
+
+                - for ws in [ws1]
+                  %li{:class => "workshop-#{ws.try(:id)}"}= ws.try(:title) || 'Freizeit'

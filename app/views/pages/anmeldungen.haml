@@ -1,0 +1,26 @@
+- content_for :title do
+  Anmeldungen
+
+%section.content
+  %article
+    %hgroup
+      %h1 Wer hat sich alles angemeldet?
+
+    - unless current_user && current_user.can_view_visible_registrations?
+      %p.lead
+        Um sehen zu können, wer sich außer dir zum BUT angemeldet hat, musst du in deiner BUT-Anmeldung deinen Namen und deine Landesgruppe als für andere Angemeldete sichtbar markieren. Im angemeldeten Modus kannst du anschließend hier die Teilnehmerliste einsehen.
+    - else
+      %p.lead
+        :markdown
+          Dies ist eine Liste aller **Angemeldeten**, die ihren Namen und ihre Landesgruppe **als für andere sichtbar** markiert haben. **Gegebenenfalls haben sich noch mehr Leute angemeldet als in dieser Liste stehen. Diese haben ihre Informationen nicht freigegeben, können die Liste aber gleichzeitig auch nicht einsehen**.
+      %p
+        %table(width="100%")
+          %tr
+            %th Name
+            %th Landesgruppe
+          - for registration in ButRegistration.where('visible').order(:lg, :name)
+            %tr
+              %th= registration.name
+              %td= registration.lg
+
+

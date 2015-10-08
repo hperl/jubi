@@ -1,0 +1,29 @@
+- content_for :title do
+  = 'BUT-Board: ' + yield(:subtitle)
+
+- content_for :content do
+  %section.content
+    %aside.sidebar
+      %nav
+        = semantic_navigation 'butboard-sidemenu fw' do |n|
+          - n.item fa_icon('line-chart fw', class: 'right', text: 'Übersicht'), but_board_path
+          - n.item fa_icon('file-excel-o fw', class: 'right', text: 'Excel-Liste'), download_but_board_path
+          %li.heading Finanzen
+          - n.item fa_icon('money fw', class: 'right', text: 'Einzahlungen'), but_board_payments_path
+          %li.heading Workshops
+          - n.item fa_icon('list-alt fw', class: 'right', text: 'Alle Workshops'), workshops_but_board_path
+          - n.item fa_icon('reorder fw', class: 'right', text: 'Workshop-Einteilung'), but_board_workshops_path
+          - with_feature :algorithm do
+            - n.item fa_icon('calculator fw', class: 'right', text: 'Der Algorithmus'), but_board_algorithm_path
+          %li.heading Benutzer
+          - n.item fa_icon('share fw', class: 'right', text: 'wechseln'), but_board_sudo_path
+
+    %article
+      %hgroup
+        %h1
+          BUT-Board
+          %small= yield(:subtitle)
+        %hr
+      = yield
+
+= render template: 'layouts/application'

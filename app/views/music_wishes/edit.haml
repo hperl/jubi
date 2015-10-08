@@ -1,0 +1,6 @@
+%article
+  = render partial: 'head'
+
+  = simple_form_for @user, url: music_wishes_path do |f|
+    = f.input :music_wishes, input_html: {rows: 15}
+    = f.button :submit

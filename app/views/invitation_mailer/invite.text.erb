@@ -1,0 +1,13 @@
+Hallo,
+
+du wurdest zu der Gruppe »<%= @invitation.group.name %>« eingeladen.
+
+Du kannst den folgenden Link benutzen um die Einladung anzunehmen:
+<%= group_invitation_url(group_id: @invitation.group, id: @invitation.id) %>
+
+Wenn du der Gruppe nicht beitreten möchtest, dann ignoriere diese E-Mail einfach.
+
+PS: Folgende Leute sind schon in der Gruppe:
+<% for user in @invitation.group.members %>
+     - <%= user.displayname %>
+<% end %>

@@ -1,0 +1,6 @@
+var visibleId = $('.timeslot-workshop:visible').attr('id')
+<%- for timeslot in @timeslots do %>
+  $("#timeslot-workshop-<%= timeslot.id %>").replaceWith("<%= escape_javascript(render partial: 'timeslot_workshops', locals: {timeslot: timeslot}) %>")
+<% end %>
+$('.timeslot-workshop').hide()
+$('#'+visibleId).show()

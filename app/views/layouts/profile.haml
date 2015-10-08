@@ -1,0 +1,39 @@
+- content_for :content do
+  %section.content
+    %aside.sidebar
+      %nav
+        = semantic_navigation :sidemenu do |n|
+          - n.item fa_icon('home fw', class: 'right', text: 'Profil'), profile_path
+          - n.item fa_icon('money fw', class: 'right', text: 'Kontoübersicht'), payments_path
+          - with_feature :music_wishes do
+            - n.item fa_icon('music fw', class: 'right', text: 'Musikwünsche'), music_wishes_path, highlights_on: [{controller: 'music_wishes'}]
+          - with_feature :workshop_choices do
+            - n.item fa_icon('calendar-o fw', class: 'right', text: 'Plane dein BUT'), but_plan_path
+          - with_feature :photos do
+            - n.item fa_icon('camera fw', class: 'right', text: 'Fotos'), photos_path
+
+          %li.heading BUT-Anmeldungen
+          - unless current_user.registrations.empty?
+            - for registration in current_user.registrations
+              - n.item registration.name, edit_but_registration_path(registration)
+          - without_feature :no_more_registrations do
+            - n.item fa_icon('plus fw', class: 'right', text: 'Neue Anmeldung'), new_but_registration_path
+
+          %li.heading Gruppen
+          - unless current_user.groups.empty? && current_user.owned_groups.empty?
+            - for group in current_user.owned_groups + current_user.groups
+              - n.item group.name, group_path(group)
+          - n.item fa_icon('plus fw', class: 'right', text: 'Neue Gruppe'), new_group_path
+
+          - without_feature :final_workshop_choices do
+            %li.heading Deine Workshops
+            - unless current_user.workshops.empty?
+              - for workshop in current_user.workshops
+                - n.item workshop.title, edit_workshop_path(workshop)
+            - n.item fa_icon('plus fw', class: 'right', text: 'Workshop anbieten'), new_workshop_path
+            - n.item fa_icon('check fw', class: 'right', text: 'Workshop-Einteilungen'), ws_results_path
+
+
+    = yield
+
+= render template: 'layouts/application'

@@ -1,0 +1,54 @@
+- content_for :title do
+  Plane dein BUT!
+
+%section.content
+  %aside.fixed-sidebar
+    = render partial: 'workshop_choices/sidebar'
+
+  %article
+    %hgroup
+      %h1 Plane dein BUT!
+
+    - if current_user.registrations.votable.count == 0
+      .callout.panel
+        Du hast noch keine bezahlte Anmeldung und kannst daher auch noch keine Workshops wählen.
+
+    = render partial: 'help_areas'
+
+    %div(data-magellan-expedition="fixed")
+      %dl.sub-nav
+        %dt
+          Tage:
+          - for day in %w(Donnerstag Freitag Samstag Sonntag)
+            %dd(data-magellan-arrival="#{day}")
+              %a(href="##{day}")= day
+
+      %dl.sub-nav.filter
+        %dt
+          Filter:
+          %dd.active
+            %a#filterAllVisible(href="") alles
+          %dd
+            %a#filterWorkshopsVisible(href="") Workshops
+          %dd
+            %a#filterHelperShiftsVisible(href="") Helferschichten
+
+    - for day, timeslots in Timeslot.all.order({start: :asc, end: :asc}).group_by { |ts| ts.start.to_date }
+      - weekday = l(day, format: :weekday)
+      %a(name="#{weekday}")
+      %div(id="#{weekday}" data-magellan-destination="#{weekday}")
+        %h2= l day, format: :weekday
+        - for @timeslot in timeslots.select {|ts| ts.workshop? || ts.helper_shift? || ts.tournament? }
+          - if @timeslot.workshop?
+            %h3(id="ts-#{@timeslot.id}" style="padding-top:40px")
+              Workshopschiene
+              =l day, format: :weekday
+              =l @timeslot.start, format: :short_time
+              —
+              =l @timeslot.end, format: :time
+            - for @workshop in @timeslot.workshops.visible
+              = render partial: 'workshops/workshop'
+          - elsif @timeslot.helper_shift?
+            = render partial: 'timeslots/timeslot', locals: {day: day}
+          - elsif @timeslot.tournament?
+            = render partial: 'workshop_choices/tournament', locals: {day: day, tournament: @timeslot}

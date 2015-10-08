@@ -1,0 +1,6 @@
+/* rule for loading buttons -> replace icon with spinner */
+a.loading i.fa:before { content: "\f110"; }
+a.loading i.fa {
+  -webkit-animation: fa-spin 2s infinite linear;
+          animation: fa-spin 2s infinite linear;
+}

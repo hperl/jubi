@@ -1,0 +1,28 @@
+%article
+  %h1
+    Kontoübersicht
+  %p.lead
+    Bitte beachte, dass es bis zu zwei Wochen dauern kann, bis deine Überweisung hier auftaucht.<br>
+    Wenn du Probleme oder Fragen hast, wende dich an <a href="mailto:julia.knolle@yfu-deutschland.de">Julia Knolle</a>.
+
+  %table
+    %thead
+      %tr
+        %td Beschreibung
+        %td Datum
+        %td ausgeführt von
+        %td Betrag
+    %tbody
+      %tr
+        %td
+          %strong Kontostand
+        %td
+        %td
+        %td.right
+          %strong= number_to_currency current_user.balance
+      - for transaction in @transactions
+        %tr
+          %td= transaction_description(transaction)
+          %td= l transaction.created_at
+          %td= transaction.try(:responsible_user).try(:displayname)
+          %td.right= number_to_currency transaction.amount

@@ -1,0 +1,5 @@
+- content_for :subtitle do
+  Das Workshopangebot auf dem BUT
+
+- for @workshop in @workshops
+  = render partial: 'workshops/workshop'

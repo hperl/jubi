@@ -1,0 +1,59 @@
+%article
+  %hgroup
+    %h1 Workshop-Einteilung
+    %p.lead Hier siehst du die Einteilungen für alle Workshops, die du trainierst.
+
+  - for workshop in (@user.workshops + @user.registrations.map(&:training_workshops).flatten).uniq { |w| w.id }
+    .panel
+      %h4
+        = workshop.title
+      %p
+        -unless workshop.helper_shift?
+          -if workshop.multiple_trainers?
+            = fa_icon 'users fw'
+          - else
+            = fa_icon 'user fw'
+          von #{workshop.human_trainers}
+          %br
+        - if workshop.timeslots.empty?
+          %i Für diesen Workshop steht noch keine Zeit fest
+        - else
+          = fa_icon 'clock-o fw'
+          = workshop.timeslots.map {|t| timeslot_title(t)}.join(' und ')
+          %br
+          = fa_icon 'empty fw', text: spaces_left_text(workshop.spaces_left)
+      - choices = workshop.workshop_choices.final_participants.joins(:but_registration).to_a
+      - trainers = workshop.workshop_choices.final_trainers.joins(:but_registration).to_a
+      - choices.sort! { |a, b| b.but_registration.karma <=> a.but_registration.karma }
+      - if choices.empty?
+        %p Es wurde niemand eingeteilt.
+      - else
+        %table(width="100%")
+          - trainers.each do |trainer|
+            %tr
+              %td
+              %td
+                %strong= trainer.but_registration.name
+              %td
+              %td= fa_icon('user fw', text: 'trainiert')
+
+          - choices.each.with_index do |choice, i|
+            %tr
+              %td= i+1
+              %td
+                %strong= choice.but_registration.name
+              %td #{choice.but_registration.karma} Karma
+              %td
+                - case
+                - when choice.trainer?
+                  = fa_icon('user fw')
+                  trainiert
+                - when choice.choice_type == 'first_choice'
+                  = fa_icon('smile-o fw')
+                  =t choice.choice_type
+                - when choice.choice_type == 'second_choice'
+                  = fa_icon('meh-o fw')
+                  =t choice.choice_type
+                - when choice.choice_type == 'third_choice'
+                  = fa_icon('frown-o fw')
+                  =t choice.choice_type

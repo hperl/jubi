@@ -1,0 +1,42 @@
+- selected = @timeslot.selected_by_user? current_user
+.radius.panel.timeslot.helper-shift{:class => ["timeslot-#{@timeslot.id}", selected && "callout"]}
+  - if @timeslot.helper_shift?
+    %h4
+      Helferschicht
+      = @timeslot.name
+      .right
+        - for registration in current_user.registrations.payed
+          - if !@timeslot.max_tn || @timeslot.missing_tn != 0 || @timeslot.selected_by_registration?(registration)
+            - if registration.frozen?
+              - if @timeslot.selected_by_registration? registration
+                %span.right= fa_icon('hand-o-up fw', text: 'Du hilfst!')
+
+            - else
+              %ul.action-buttons.right
+                - if current_user.registrations.size > 1
+                  %li
+                    .disabled.secondary.button= registration.name
+                %li
+                  - if @timeslot.selected_by_registration? registration
+                    = link_to "#{fa_icon('remove')} nicht helfen".html_safe, but_registration_timeslot_help_path(registration, @timeslot), class: 'alert button', remote: true, method: 'patch'
+                  - else
+                    = link_to "#{fa_icon('hand-o-up')} helfen".html_safe, but_registration_timeslot_help_path(registration, @timeslot), class: 'button', remote: true, method: 'patch'
+            %br
+
+    = fa_icon 'clock-o fw'
+    =l @timeslot.start.to_date, format: :weekday
+    =l @timeslot.start, format: :short_time
+    —
+    =l @timeslot.end, format: :time
+    - if @timeslot.max_tn
+      - if @timeslot.missing_tn > 1
+        %p #{fa_icon 'info fw'} Wir brauchen noch #{@timeslot.missing_tn.to_words} Menschen.
+      - elsif @timeslot.missing_tn == 1
+        %p #{fa_icon 'info fw'} Wir brauchen noch einen Mensch.
+      - else
+        %p #{fa_icon 'smile-o fw'} Wir haben genügend Menschen für diese Schicht.
+    - else
+      %p #{fa_icon 'info fw'} Wir können hier beliebig viele Menschen gebrauchen.
+
+    %p= @timeslot.try(:description)
+

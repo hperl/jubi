@@ -1,0 +1,31 @@
+%article
+  %h1
+    %span.subheader Gruppe:
+    = @group.name
+
+  %h2
+    Mitglieder
+
+  - if can? :manage, @group
+    %a.button(href='#' data-reveal-id='invite-modal') Weitere Leute einladen
+    = render partial: 'invite_modal'
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Status
+    %tbody
+      - for member in @group.members
+        %tr
+          %td= member.displayname
+          %td
+            - if member == @group.owner
+              %span.label Gründer
+            - else
+              %span.label.secondary Mitglied
+      - for invitation in @group.invitations
+        %tr
+          %td= invitation.email
+          %td
+            %span.label.secondary ausstehende Einladung

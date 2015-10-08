@@ -1,0 +1,127 @@
+!!! 5
+%head
+  %title
+    - if content_for? :title
+      = yield :title
+      &ndash;
+    YFU Jubiläum 2017
+  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+  = javascript_include_tag "application", "data-turbolinks-track" => true
+
+  %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  %meta(charset="utf-8")
+  %link(rel="icon" type="image/x-icon" href="/favicon.ico")
+
+  = csrf_meta_tags
+%body.site
+  %header
+    %nav.top-bar(data-topbar data-options="back_text: « zurück")
+      %ul.title-area
+        %li.name
+          %h1
+            = link_to(image_tag('yfu-topnav.png') + 'Jubiläum 2017', root_path,
+              class: 'show-for-small-only')
+            = link_to(image_tag('yfu-topnav.png') + 'Jubiläum 2017', root_path,
+              class: 'show-for-medium-only')
+            = link_to(image_tag('yfu-topnav.png') + 'Jubiläum 2017', root_path,
+              class: 'show-for-large-up')
+        %li.toggle-topbar
+          %a(href='#')
+            %i.fa.fa-bars
+            Menu
+      %section.top-bar-section
+        -#= semantic_navigation :pages_menu do |n|
+          -#- n.item 'Infos', '#' do
+            -#- with_feature :motto do
+              -#- n.item 'Das Motto des BUTs',       page_path('motto')
+            -#- with_feature :haus do
+              -#- n.item 'Über das KIEZ Arendsee',   page_path('haus')
+            -#- with_feature :zeitplan do
+              -#- n.item 'Der Zeitplan des BUTs',    page_path('zeitplan')
+            -#- with_feature :team do
+              -#- n.item 'Das Team stellt sich vor', page_path('team')
+
+          -#- with_feature :login do
+            -#- n.item 'Wer hat sich angemeldet?', page_path('anmeldungen')
+
+          -#- with_feature :mithelfen do
+            -#- n.item 'Mitwirken!',       page_path('mitwirken')
+          -#- with_feature :workshops do
+            -#- n.item 'Workshops', workshops_path
+
+          -#- with_feature :help do
+            -#- n.item "#{fa_icon('life-ring')} Hilfe".html_safe, '#' do
+              -#= render partial: 'help_pages', locals: {n: n}
+
+          -#- with_feature :login do
+            -#- n.item "#{fa_icon('user')} Benutzer".html_safe, profile_path,
+              -#highlights_on: [], hidden_unless: signed_in? do
+              -#- n.item "#{fa_icon('home')} Profil".html_safe,
+                -#profile_path,
+                -#highlights_on: [{controller: 'profiles'},
+                                -#{controller: 'but_registrations'},
+                                -#{controller: 'groups'},
+                                -#{controller: 'payments'}]
+              -#- with_feature :workshop_choices do
+                -#- n.item "#{fa_icon('calendar-o')} Plane dein BUT".html_safe, but_plan_path
+              -#- with_feature :music_wishes do
+                -#- n.item "#{fa_icon('music')} Musikwünsche", music_wishes_path, highlights_on: [{controller: 'music_wishes'}]
+              -#- n.item "#{fa_icon('dashboard')} BUT-Board".html_safe, but_board_path,
+                -#hidden_unless: can?(:view, :but_board)
+              -#%li.divider
+              -#%li
+                -#= link_to "#{fa_icon('sign-out')} abmelden".html_safe,
+                          -#destroy_user_session_path, method: :delete
+            -#- n.item "#{fa_icon('sign-in')} anmelden" , new_user_session_path unless signed_in?
+
+  %main
+    - if flash[:notice] || flash[:warning] || flash[:alert]
+      %section.flash
+        - if flash[:notice]
+          .alert-box.info(data-alert)
+            = flash[:notice]
+
+        - if flash[:warning]
+          .alert-box.warning(data-alert)
+            = flash[:warning]
+
+        - if flash[:alert]
+          .alert-box.alert(data-alert)
+            = flash[:alert]
+
+    = content_for?(:content) ? yield(:content) : yield
+
+  .bottom
+    %footer
+      %div
+        %p
+          %strong Impressum<br>
+        %p= image_tag('yfu-logo.png')
+        %p
+          Das Jubiläum 2017 ist eine Veranstaltung des
+          Deutschen Youth For Understanding Komitees e.V.
+      %div
+        %p
+          %strong Anschrift<br>
+          Deutsches Youth For Understanding Komitee e.V. (YFU)<br>
+          Oberaltenallee 6<br>
+          22081 Hamburg
+        %p
+          Telefon: +49 (0) 40 22 70 02 -0<br>
+          Fax: +49 (0) 40 22 70 02 -27<br>
+          E-Mail:
+          %a(href="mailto:info@yfu.de") info@yfu.de
+      %div
+        %p
+          %strong Vorstand<br>
+          Marcus von Garßen,
+          Rita Stegen,
+          Elmar Lammerskitten,
+          Ricarda Bauch,
+          Simon Born
+        %p
+          %strong Vereinsregister<br>
+          Amtsgericht Hamburg, Registernummer VR&nbsp;6999
+
+
+  = yield(:page_js)

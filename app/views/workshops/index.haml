@@ -1,0 +1,16 @@
+%section.content
+  %article
+    %h1 Das Workshopangebot auf dem BUT
+    - if can? :create, Workshop
+      %p.lead
+        Hast du eine Idee für einen tollen Workshop?
+        = succeed '!' do
+          = link_to 'Biete einen an', new_workshop_path
+        %br
+        Brauchst du eine Idee?
+        = succeed '!' do
+          = link_to 'Stöber in unserer Themenliste', page_path('workshop-ideen')
+
+    - with_feature :workshops do
+      - for @workshop in @workshops
+        = render partial: 'workshop'

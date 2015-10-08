@@ -1,0 +1,43 @@
+.timeslot-workshop{:id => "timeslot-workshop-#{timeslot.id}"}
+  %h2 Workshops
+  %p
+    %strong
+      für
+      = timeslot_title timeslot
+  %p
+    = form_tag(but_board_workshops_path, remote: true) do
+      = hidden_field_tag 'id', timeslot.id
+      .row.collapse
+        .small-10.columns
+          = select_tag 'added_workshop', options_from_collection_for_select(Workshop.regular.order(:title) - timeslot.workshops, 'id', 'oneline_summary')
+        .small-2.columns
+          %button.button.postfix(type="submit" name="commit")
+            = fa_icon('plus').html_safe
+  %hr
+
+  - for workshop in timeslot.workshops.regular
+    %h3
+      = workshop.title
+      = link_to fa_icon('times').html_safe, but_board_workshop_path(workshop, timeslot: timeslot.id), method: :delete, remote: true, class: 'pull-right'
+    %p
+      von
+      = workshop.human_trainers
+      %br
+      = fa_icon 'clock-o'
+      = workshop.timeframe
+      in
+      - timeslots = []
+      - for ts in workshop.timeslots
+        - timeslots << timeslot_title(ts)
+      - title = timeslots.join('; ')
+      %span.has-tip{:title => title}
+        = pluralize workshop.timeslots.length, 'Einheit', 'Einheiten'
+
+    %p
+      %strong Besondere Anforderungen
+      = workshop.special_requirements
+      = '<i>keine</i>'.html_safe if workshop.special_requirements.empty?
+    %p
+      %strong Material
+      = workshop.materials
+      = '<i>keine</i>'.html_safe if workshop.materials.empty?

@@ -1,0 +1,108 @@
+%article
+  %hgroup
+    %h1 Dein Profil
+    %h2.subheader= @user.displayname
+
+  .panel.callout.radius
+    %h5
+      Kontostand:
+      = number_to_currency @user.balance
+      = link_to 'Kontoübersicht', payments_path, class: "right"
+    - if @user.balance > 0
+      %p
+        Bitte wende dich an <a href="mailto:julia.knolle@yfu-deutschland.de">Julia Knolle</a>, damit sie dir das restliche Geld zurück überweisen kann.
+    - if @user.balance < 0
+      %p
+        Bitte überweise
+        = number_to_currency -@user.balance
+        an
+        %br
+        Empfänger
+        = Settings.bank.account
+        %br
+        IBAN
+        = Settings.bank.iban
+        %br
+        BIC
+        = Settings.bank.bic
+        %br
+        Betreff:
+        %strong
+          BUT 2015 Konto ID
+          = @user.id
+      %p
+        %strong Wichtig:
+        Du bist erst dann fest für das Bundestreffen angemeldet, wenn du bezahlt hast.
+
+  %h2 BUT-Anmeldung
+  - if @user.registrations.empty?
+    %p Du bist noch nicht für das BUT angemeldet.
+  - else
+    %table
+      %thead
+        %tr
+          -#%th Status
+          %th Name
+          %th Adresse
+          %th Hilfe angeboten
+          %th An- und Abreise
+          %th Preis
+          %th
+      %tbody
+        - for registration in @user.registrations
+          %tr
+            %td
+              = registration.name
+              - if registration.nickname && !registration.nickname.empty?
+                = " (#{registration.nickname})"
+            %td= registration.address
+            %td= help_offered(registration)
+            %td= checkin_checkout_interval(registration)
+            %td.right
+              = number_to_currency registration.price
+              - if registration.payed?
+                %span.radius.secondary.label bezahlt
+              - if registration.cancelled? || registration.cancelled_without_costs?
+                %span.radius.alert.label storniert
+              - if registration.unpayed?
+                %span.radius.warning.label nicht bezahlt
+            %td
+              - unless registration.cancelled? || registration.cancelled_without_costs?
+                %ul.action-buttons
+                  %li= link_to 'bearbeiten', edit_but_registration_path(registration), class: 'button'
+                %ul.action-buttons
+                  %li= link_to 'stornieren', but_registration_path(registration), method: 'delete', class: 'button'
+
+  - without_feature :no_more_registrations do
+    = link_to 'Neue BUT-Anmeldung', new_but_registration_path, class: 'small button'
+    = link_to 'Hilfe zur Anmeldung', page_path('hilfe/anmeldung'), class: 'small secondary button'
+
+  %h2 Gruppen
+  - if @user.groups.empty? && @user.owned_groups.empty?
+    %p Du bist noch in keinen Gruppen.
+  - else
+    %table
+      %thead
+        %tr
+          %th Name
+          %th
+          %th Aktionen
+      %tbody
+        - for group in @user.owned_groups + @user.groups
+          %tr
+            %td= link_to group.name, group_path(group)
+            %td
+              = pluralize(group.members.length, 'Mitglied', 'Mitglieder')
+              - unless group.invitations.empty?
+                und
+                = pluralize(group.invitations.length, 'ausstehende Einladung', 'ausstehende Einladungen')
+            %td
+              %ul.action-buttons
+                - if can? :destroy, group
+                  %li= link_to 'löschen', group_path(group), method: :delete, class: 'alert button'
+                - else
+                  %li= link_to 'verlassen', leave_group_path(group), method: :delete, class: 'alert button'
+
+  = link_to 'Neue Gruppe erstellen', new_group_path, class: 'small button'
+  = link_to 'Hilfe zur Gruppenfunktion', page_path('hilfe/gruppen'), class: 'small secondary button'
+

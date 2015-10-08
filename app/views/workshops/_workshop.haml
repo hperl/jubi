@@ -1,0 +1,78 @@
+- workshop ||= @workshop
+- selected = current_user && current_user.registrations.payed.joins(:workshop_choices).where(workshop_choices: {final: false, workshop_id: workshop.id}).count > 0
+.panel.radius.workshop{:class => ["workshop-#{workshop.id}", selected && "callout"]}
+  - if workshop.helper_shift?
+    = render partial: 'workshops/helper_shift', locals: {workshop: workshop}
+  - else
+    %h4.clearfix
+      - if signed_in?
+        - if current_user.remembered? workshop
+          - icon = fa_icon('star lg fw').html_safe
+        - else
+          - icon = fa_icon('star-o lg fw').html_safe
+        = link_to icon, remember_workshop_path(workshop),
+          'method' => 'patch', 'remote' => true, 'title' => 'merken'
+
+      = workshop.title
+
+      - if can? :edit, workshop
+        %ul.action-buttons.right
+          %li
+            = link_to "#{fa_icon('pencil fw')} bearbeiten".html_safe, edit_workshop_path(workshop), class: 'button'
+          - if can? :toggle_visibility, workshop
+            %li
+              - if workshop.visible?
+                = link_to "#{fa_icon('eye-slash fw')} nicht freischalten".html_safe, toggle_visibility_workshop_path(workshop), class: 'button',
+                  method: 'patch', remote: true
+              - else
+                = link_to "#{fa_icon('eye fw')} freischalten".html_safe, toggle_visibility_workshop_path(workshop), class: 'button',
+                  method: 'patch', remote: true
+
+
+    %p
+      -if workshop.multiple_trainers?
+        = fa_icon 'users fw'
+      - else
+        = fa_icon 'user fw'
+      von #{workshop.human_trainers} — dauert ca. #{workshop.timeframe} Minuten
+      %br
+      - if workshop.timeslots.empty?
+        %i Für diesen Workshop steht noch keine Zeit fest
+      - else
+        = fa_icon 'clock-o fw'
+        = workshop.timeslots.map {|t| timeslot_title(t)}.join(' und ')
+      - unless workshop.price.nil? || workshop.price.empty? || workshop.price == "0"
+        %br
+        = fa_icon('euro fw', text: number_to_currency(workshop.price))
+      - if can? :edit, workshop
+        %br
+        = fa_icon('pie-chart fw')
+        Vorläufiges Wahlergebnis:
+        #{workshop.workshop_choices.choice.first_choice.count}x Erstwahl,
+        #{workshop.workshop_choices.choice.second_choice.count}x Zweitwahl,
+        #{workshop.workshop_choices.choice.third_choice.count}x Drittwahl
+
+
+
+    %p= auto_link(sanitize(workshop.description, tags: %w(strong em ol ul li br p), attributes: []))
+
+  - with_feature :workshop_choices do
+    - if current_user
+      - for registration in current_user.registrations.votable
+        %div.clearfix
+          - if registration.frozen?
+            - chosen = registration.final_choice_for_workshop(workshop)
+            - unless chosen.nil?
+              %strong= fa_icon('check fw', text: "Gewählt von #{registration.name} (#{t(chosen.choice_type)})")
+          - else
+            %strong= "Wahl von #{registration.name}"
+            %ul.action-buttons.right
+              - chosen = registration.choice_for_workshop(workshop).try(:choice_type)
+              - for choice in %w(first_choice second_choice third_choice)
+                - label = t(choice)
+                - if choice == chosen
+                  - label = fa_icon('check fw').html_safe + label
+                - else
+                  - label = fa_icon('empty fw').html_safe + label
+                %li= link_to label, but_registration_workshop_choices_path(registration, {workshop_id: workshop.id, choice_type: choice}),
+                  class: "button #{(choice == chosen) ? 'active' : ''}", method: :post, remote: true

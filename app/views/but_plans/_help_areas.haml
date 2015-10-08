@@ -1,0 +1,30 @@
+#help-areas-text
+  - for registration in current_user.registrations.payed
+    - unless registration.helps?
+      #{registration.name},
+      - if registration.wants_to_help_freestyler?
+        :markdown
+          du hast Dich bereits als Freestyler zum Helfen gemeldet. Super! Vielen Dank schon im Voraus, denn wir freuen uns sehr über jede helfende Hand. Auf dieser Seite hast Du neben der Wahl Deiner Workshops auch die Möglichkeit, festzulegen, wann genau Du mithelfen möchtest oder zu konkretisieren in welchem Bereich Du helfen möchtest. Wenn Du aber doch am liebsten einfach flexibel, dort wo gerade Hilfe gebraucht wird, eingesetzt werden möchtest, dann bestätige Deine Meldung als Freestyler für einen oder mehrere Tage, sodass wir an diesen Tagen für bestimmte Aufgaben spontan auf Dich zurückgreifen können.
+      - elsif registration.help_areas.size >= 1
+        - areas = ''
+        - if registration.help_areas.size == 1
+          - areas += 'den Bereich '
+        - else
+          - areas += 'die Bereiche '
+        - areas += registration.help_areas.map {|a| content_tag(:strong) {t(a)} }.to_sentence
+        :markdown
+          du hast Dich bereits als Helfer für #{areas} gemeldet. Super! Vielen Dank schon im Voraus, denn wir freuen uns sehr über jede helfende Hand. Auf dieser Seite hast Du neben der Wahl Deiner Workshops die Möglichkeit, genau festzulegen, wann Du mithelfen möchtest. So kannst Du dein BUT planen, wie es Dir am besten gefällt.
+      - else
+        - case
+        - when registration.kernteam?
+          :markdown
+            als Teil des Kernteams unterstützt Du uns beim BUT bereits tatkräftig. Super! Vielen Dank dafür schon im Voraus. Wenn Du möchtest, hast Du auf dieser Seite neben der Wahl Deiner Workshops trotzdem noch die Möglichkeit dich bei einer Helferschicht oder als Freestyler einzutragen.
+        - when registration.extended_kernteam?
+          :markdown
+            als Teil des erweiterten Kernteams unterstützt Du uns beim BUT bereits tatkräftig. Super! Vielen Dank dafür schon im Voraus. Wenn Du möchtest, hast Du auf dieser Seite neben der Wahl Deiner Workshops trotzdem noch die Möglichkeit dich bei einer Helferschicht oder als Freestyler einzutragen.
+        - when registration.offers_workshop?
+          :markdown
+            du hilfst uns beim BUT bereits durch das Anbieten eines Workshops. Super! Vielen Dank dafür schon im Voraus. Wenn Du möchtest, hast Du auf dieser Seite neben der Wahl Deiner Workshops trotzdem noch die Möglichkeit dich bei einer Helferschicht oder als Freestyler einzutragen. 
+        - else
+          :markdown
+            du hast Dich bereits als Helfer für 0 Bereiche gemeldet. Merkste selbst, ´ne?! Nur ein Scherz, doch wir freuen uns sehr über jede helfende Hand! Hier hast Du neben der Workshopwahl noch einmal die Möglichkeit, zu schauen, ob und wann Du uns nicht doch in einem Bereich unterstützen möchtest. 

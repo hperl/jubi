@@ -1,0 +1,79 @@
+de:
+  simple_form:
+    "yes": 'Ja'
+    "no": 'Nein'
+    required:
+      #text: 'bitte ausfüllen'
+      #mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      html: '<i class="fa fa-asterisk"></i>'
+    error_notification:
+      default_message: "Es gab folgende Fehler:"
+    labels:
+      defaults:
+        password: 'Passwort'
+        address: 'Adresse'
+        title: 'Titel'
+        email_addresses: 'E-Mailadressen (eine Adresse pro Zeile)'
+        description: 'Beschreibung'
+        amount: 'Betrag'
+        user_id: 'Benutzer-ID'
+        email: 'E-Mailadresse'
+        remember_me: 'angemeldet bleiben'
+        sex: 'Geschlecht'
+        music_wishes: 'Deine Musikwünsche (einer pro Zeile)'
+      group:
+        name: 'Gruppenname'
+      but_registration:
+        age: 'Alter (beim BUT 2015)'
+        lg: 'Landesgruppe'
+        name: 'Vor- und Nachname'
+        nickname: 'Name auf dem Namensschild (optional)'
+        wants_to_help: 'Ja, ich will helfen!'
+        wants_to_help_freestyler_html: 'Ich möchte als <span data-tooltip class="has-tip" title="Als Freestyler erklärst du dich dazu bereit, das BUT-Kernteam und die anderen Helferteams bei kleineren Aufgaben zu unterstützen und nach Bedarf auch mal spontan irgendwo mit anzupacken.">Freestyler</span> helfen'
+        wants_to_help_checkin_html: 'Ich möchte bei der <span data-tooltip class="has-tip" title="Du begrüßt die neu angekommenen YFUler und drückst ihnen ihren Zimmerschlüssel und ihre Willkommenstasche in die Hand.">An- und Abreise</span> helfen'
+        wants_to_help_party_html: 'Ich möchte bei der <span data-tooltip class="has-tip" title="Als Party-Helfer übernimmst Du z.B. eine Tresenschicht und kannst so dazu beitragen, dass die über 300 Gäste diesen Abend nie vergessen werden! Alternativ oder zusätzlich unterstützt Du die Party-Koordination bei der Vorbereitung oder der Nachbereitung der Party.">Party</span> helfen'
+        wants_to_help_kiosk_html: 'Ich möchte beim <span data-tooltip class="has-tip" title="Als Kiosk-Helfer übernimmst du eine oder gerne auch mehrere Kiosk-Schichten und trägst damit zur Versorgung des leiblichen Wohls der BUT-Teilnehmer bei. Die Hauptaufgabe umfasst den Verkauf von Getränken und Speisen. Weitere Aufgaben können z.B. die Zubereitung von Getränken und die Umsetzung eines Infopoints am Kiosk umfassen.">Kiosk</span> helfen'
+        wants_to_help_grillen_html: 'Ich möchte beim <span data-tooltip class="has-tip" title="Am Samstag wollen wir grillen und suchen dafür Leute, die Würstchen, Maiskolben u.ä. wenden.">Grillen</span> helfen'
+        wants_to_help_ersthelfer_html: 'Ich bin Ersthelfer'
+        wants_to_offer_workshop: 'Ich möchte evtl. einen Workshop anbieten.'
+        visible: 'Ich stimme zu, dass mein Name und meine Landesgruppe für andere angemeldete Benutzer, die ebenfalls diese Information teilen, sichtbar ist.'
+        t_shirt_amount: 'Ich hätte gerne ... T-Shirts ...'
+        t_shirt_size: 'T-Shirtgröße'
+      workshop:
+        trainers: 'Workshop-Trainer'
+        max_tn: 'Maximale Anzahl an Teilnehmern'
+        price: 'Kostenumlage (in €)'
+        special_requirements: 'Besondere Anforderungen'
+        timeframe: 'Dauer des Workshops (in Minuten)'
+        materials: 'Benötigte Materialien'
+    hints:
+      payment:
+        user_id: 'Muss auf der Überweisung angegeben sein'
+      but_registration:
+        nickname: 'Erscheint auf dem Namensschild'
+        wants_to_help: 'Wir brauchen immer Leute, die auf dem BUT helfen wollen.'
+        wants_to_offer_workshop: 'Ohne Workshops kein BUT!'
+        address: 'Bitte gib deine Adresse inklusive PLZ ein, damit wir die Fahrtkosten berechnen können'
+      workshop:
+        price: 'Wenn der Workshop für die Teilnehmer kostenlos ist, kannst du dieses Feld leer lassen.'
+        timeframe: 'Wie lange soll der Workshop dauern?'
+        materials: 'Materialien, die du vom BUT-Team brauchst. Alles was hier nicht steht musst du selbst mitbringen.'
+        special_requirements: 'Muss dein Workshopraum eine gewisse Größe haben? Soll der Workshop an einem bestimmten Tag stattfinden? Wenn du irgendwelche besonderen Wünsche hast dann lass es uns hier wissen!'
+  helpers:
+    submit:
+      group:
+        create: 'Gruppe erstellen'
+      user:
+        create: 'anmelden'
+        update: 'Musikwünsche speichern'
+      payment:
+        create: 'Zahlung eintragen'
+      invitation:
+        create: 'Einladungen verschicken'
+  activerecord:
+    models:
+      user: 'Benutzer'
+      but_registration: 'BUT-Anmeldung'
+

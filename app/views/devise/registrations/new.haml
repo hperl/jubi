@@ -1,0 +1,25 @@
+%section.content
+  %aside.sidebar
+    = render "devise/shared/links"
+
+  %article
+    %h2 Anmelden
+
+    .callout.panel
+      %p
+        Wenn du bereits einen <strong>Intranet-Login</strong> hast, kannst du dich auch direkt damit
+        = link_to 'anmelden', new_user_session_path
+        und brauchst dich hier nicht extra zu registrieren.
+        = succeed '.' do
+          = link_to 'Mehr Infos', page_path('hilfe/anmeldung')
+
+    = simple_form_for(resource, as: resource_name, url: user_registration_path) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :email, :required => true, :autofocus => true
+        = f.input :password, :required => true
+        = f.input :password_confirmation, :required => true
+
+      .form-actions
+        = f.button :submit, 'registrieren'

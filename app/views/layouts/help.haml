@@ -1,0 +1,22 @@
+- content_for :content do
+  %section.content
+    %aside.sidebar
+      %nav
+        = semantic_navigation :sidemenu do |n|
+          %li.heading Hilfeseiten
+          = render partial: 'help_pages', locals: {n: n}
+
+    %article
+      %hgroup
+        %h1
+          %span.subheader Hilfe:
+          = yield(:topic)
+      = yield
+
+- content_for :title do
+  - if content_for? :topic
+    = "Hilfe: #{yield :topic}"
+  - else
+    Hilfe
+
+= render template: 'layouts/application'

@@ -1,0 +1,6 @@
+$("<%= escape_javascript(render partial: 'sidebar') %>").replaceAll("#workshop-choices-sidebar");
+$("<%= escape_javascript(render partial: 'but_plans/help_areas') %>").replaceAll("#help-areas-text");
+<%- for workshop in @workshops do %>
+    $("<%= escape_javascript(render partial: 'workshops/workshop', locals: {workshop: workshop}) %>").replaceAll(".workshop.workshop-<%= workshop.id %>");
+    $("li.workshop-<%= workshop.id %>").effect('highlight', 2000);
+<% end %>

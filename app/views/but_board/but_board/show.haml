@@ -1,0 +1,38 @@
+- content_for :subtitle do
+  Alle Informationen auf einen Blick
+
+- start = Date.parse "01.09.2014"
+= line_chart [{name: "Workshops", data: accumulate(Workshop.group_by_day(:created_at, format: "%d.%m.%Y").count, start)},
+    {name: "Benutzer", data: accumulate(User.group_by_day(:created_at, format: "%d.%m.%Y").count, start)},
+    {name: "Anmeldungen", data: accumulate(ButRegistration.group_by_day(:created_at, format: "%d.%m.%Y").count, start)}],
+    discrete: true,
+    library: { xAxis: { labels: {step: 2, rotation: 45, overflow: 'false'} }, yAxis: {allowDecimals: false} }
+
+
+%ul.medium-block-grid-2(data-equalizer)
+  %li
+    .panel(data-equalizer-watch)
+      %h3 Anmeldungen
+      = pie_chart({ "unbezahlt" => ButRegistration.unpayed.count, "bezahlt" => ButRegistration.payed.count, "storniert" => ButRegistration.cancelled.count, "kostenlos storniert" => ButRegistration.cancelled_without_costs.count})
+  %li
+    .panel(data-equalizer-watch)
+      %h3 Workshops
+      = pie_chart({ "sichtbar" => Workshop.regular.where(visible: true).count, "nicht sichtbar" => Workshop.regular.where(visible: false).count})
+
+%ul.medium-block-grid-4(data-equalizer)
+  %li
+    .panel.callout(data-equalizer-watch)
+      %h1= @users_count
+      %h6.subheader Benutzer
+  %li
+    .panel.callout(data-equalizer-watch)
+      %h1= @registrations_count
+      %h6.subheader Anmeldungen
+  %li
+    .panel.callout(data-equalizer-watch)
+      %h1= @workshops_count
+      %h6.subheader Workshops
+  %li
+    .panel.callout(data-equalizer-watch)
+      %h1= @helpers_count
+      %h6.subheader Helfer-Meldungen

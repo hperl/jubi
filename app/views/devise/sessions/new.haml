@@ -1,0 +1,25 @@
+%section.content
+  %aside.sidebar
+    = render "devise/shared/links"
+
+  %article
+    %h2 Einloggen
+
+    .callout.panel
+      %p
+        Du musst dich entweder mit deinem <strong>Intranet-Login anmelden</strong> oder
+        = succeed ',' do
+          %strong
+            = link_to 'registrieren', new_user_registration_path
+        bevor du dich für das BUT anmelden kannst.
+        = succeed '.' do
+          = link_to 'Mehr Infos', page_path('hilfe/anmeldung')
+
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .form-inputs
+        = f.input :email, autofocus: true
+        = f.input :password
+        = f.input :remember_me, as: :boolean
+
+      .form-actions
+        = f.button :submit

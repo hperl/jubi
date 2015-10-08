@@ -1,0 +1,19 @@
+- content_for :subtitle do
+  Einzahlungen
+
+= link_to "neue Einzahlung", new_but_board_payment_path, class: 'button'
+
+%table
+  %thead
+    %tr
+      %td Datum
+      %td Empfänger
+      %td ausgeführt von
+      %td Betrag
+  %tbody
+    - for payment in @payments
+      %tr
+        %td= payment.created_at
+        %td= payment.user.displayname
+        %td= payment.responsible_user.displayname
+        %td= number_to_currency payment.amount

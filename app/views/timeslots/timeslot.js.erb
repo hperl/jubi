@@ -1,0 +1,5 @@
+<%- for @timeslot in @timeslots do %>
+  $("<%= escape_javascript(render partial: 'timeslot') %>").replaceAll(".timeslot.timeslot-<%= @timeslot.id %>");
+<% end %>
+$("<%= escape_javascript(render partial: 'but_plans/help_areas') %>").replaceAll("#help-areas-text");
+$("<%= escape_javascript(render partial: 'workshop_choices/sidebar') %>").replaceAll("#workshop-choices-sidebar");

@@ -1,0 +1,17 @@
+%p.lead
+  Danke, dass du einen Workshop anbieten möchtest.
+  Bitte fülle dieses Formular aus, damit wir dich bei deinem Workshop optimal unterstützen können.
+  Wenn du darüber hinaus noch Fragen hast, ist <a href="mailto:thekla.welp@yfu-deutschland.de">Thekla</a> deine Ansprechpartnerin.
+
+= simple_form_for @workshop do |f|
+  = f.error_notification
+  = f.input :title
+  = f.input :description, as: :ckeditor
+  = f.input :timeframe, as: :string
+  = f.input :max_tn
+  = f.input :trainers, placeholder: @workshop.owner.try(:displayname)
+  = f.input :special_requirements, placeholder: 'keine'
+  = f.input :materials, placeholder: 'keine'
+  = f.input :price, placeholder: '0,00'
+
+  = f.button :submit

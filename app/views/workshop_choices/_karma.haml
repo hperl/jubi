@@ -1,0 +1,5 @@
+.karma.clearfix
+  - for registration in current_user.registrations.payed
+    %li.text.clearfix
+      = registration.name
+      .round.label.right= registration.karma

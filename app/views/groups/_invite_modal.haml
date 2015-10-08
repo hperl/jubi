@@ -1,0 +1,7 @@
+#invite-modal.reveal-modal(data-reveal)
+  %h2 Einladungen verschicken
+  %p.lead Hier kannst du weitere Leute per E-Mail zu deiner Gruppe einladen.
+  = simple_form_for Invitation.new, url: group_invitations_path(@group) do |f|
+    = f.input :email_addresses, as: :text
+    = f.button :submit
+  %a.close-reveal-modal &#215;

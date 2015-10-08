@@ -1,0 +1,14 @@
+- content_for :subtitle do
+  Neue Einzahlung
+
+= simple_form_for @payment, {url: but_board_payments_path} do |f|
+  .row
+    .medium-12.columns
+      = f.input :user_id
+  .row
+    .medium-12.columns
+      = f.input :amount
+
+  .row
+    .medium-12.columns
+      = f.button :submit

@@ -1,0 +1,10 @@
+features:
+  login: true
+  workshops: true
+  workshop_choices: true
+  motto: true
+  haus: true
+  zeitplan: true
+  team: true
+  mithelfen: true
+  help: true

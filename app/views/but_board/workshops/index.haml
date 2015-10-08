@@ -1,0 +1,25 @@
+- content_for :subtitle do
+  Workshops
+
+.medium-4.columns
+  %h2 Workshopslots
+
+  %ul.sidenav
+    - for timeslot in @workshop_timeslots
+      %li= link_to timeslot_title(timeslot), '#', class: 'select-timeslot-workshop', data: {timeslot: timeslot.id}
+.medium-8.columns
+  - for timeslot in @workshop_timeslots
+    = render partial: 'timeslot_workshops', locals: {timeslot: timeslot}
+
+= content_for(:page_js) do
+  :javascript
+    $('.select-timeslot-workshop').on('click', function(el) {
+      var tsId = $(el.target).data('timeslot')
+
+      el.preventDefault()
+      $('.timeslot-workshop').hide()
+      $('#timeslot-workshop-' + tsId).show()
+      $('.select-timeslot-workshop').parent('li').removeClass('active')
+      $(el.target).parent('li').addClass('active')
+    })
+    $('.timeslot-workshop').hide()

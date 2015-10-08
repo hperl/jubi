@@ -1,0 +1,378 @@
+// Place all the styles related to the profile controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "foundation_and_overrides";
+
+@import "foundation/components/grid";
+@import "foundation/components/button-groups";
+@import "foundation/components/buttons";
+@import "foundation/components/side-nav";
+
+header {
+  border-bottom: 1px solid $topbar-primary-color;
+  margin-bottom: rem-calc(30);
+}
+
+.button {
+  box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.3) inset;
+  -moz-box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
+.bottom {
+  background: $royal-purple;
+  margin-top: rem-calc(100);
+  padding-bottom: rem-calc(20);
+  color: #fff;
+  footer {
+    strong {
+      font-weight: 400;
+    }
+    @include grid-row();
+    & > div {
+      padding: rem-calc(20) 0;
+      @include grid-column(12);
+      @media #{$medium-up} {
+        @include grid-column(4);
+      }
+      & > p {
+        font-weight: 200;
+        font-size: 0.9rem;
+        margin: 0;
+        padding: rem-calc(8) 0 0 0;
+        a, a:hover { color: #fff; text-decoration: underline }
+      }
+    }
+  }
+}
+
+section.content, section.flash {
+  @include grid-row($behavior: false);
+
+  & > article, & > hgroup, & > aside.sidebar {
+    @include grid-column(12);
+  }
+
+  .two-thirds {
+    @media #{$medium-up} {
+      @include grid-column(8);
+    }
+  }
+
+  .half {
+    @media #{$medium-up} {
+      @include grid-column(6);
+    }
+  }
+
+  .narrow {
+    @media #{$medium-up} {
+      @include grid-column(4);
+    }
+  }
+
+  aside.fixed-sidebar {
+    @media #{$medium-up} {
+      @include grid-column(3);
+      position: fixed;
+      top: 50px;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+      display: block;
+      padding: 10px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+
+  aside.sidebar {
+    @media #{$medium-up} {
+      margin-top: rem-calc(25);
+      @include grid-column(3);
+    }
+  }
+
+  aside.sidebar nav ul, ul.sidenav {
+    a { text-decoration: none; }
+    @include side-nav();
+    li   { margin: 0; }
+    li i.fa.right { padding: rem-calc(4) 0 0 0; }
+    li a, li.text, li.subheading {
+      padding: rem-calc(2) rem-calc(5) !important;
+      margin: rem-calc(1) 0 !important;
+      @include radius();
+    }
+    li.subheading {
+      font-style: italic !important;
+      padding-top: rem-calc(13) !important;
+      padding-bottom: rem-calc(0) !important;
+    }
+    li.heading + li.subheading { padding-top: rem-calc(3) !important; }
+    li.active a {
+      background-color: $royal-purple !important;
+      color: #fff;
+    }
+    li:hover a {
+      background-color: lighten($royal-purple, 10) !important;
+      color: #fff !important;
+    }
+    li.heading {
+      margin: rem-calc(30) 0 0 0;
+      padding: 0 rem-calc(4);
+      color: $small-font-color;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    & > li.heading:first-child {
+      margin-top: 0;
+    }
+  }
+  aside.sidebar + article {
+    @media #{$medium-up} {
+      @include grid-column(9);
+    }
+  }
+  aside.fixed-sidebar + article {
+    @media #{$medium-up} {
+      @include grid-column($columns: 9, $offset:3);
+    }
+  }
+
+  a { text-decoration: underline; }
+  a.button { text-decoration: none; }
+}
+
+a i.fa:first-child {
+  padding-right: rem-calc(5);
+}
+
+.radios > span {
+  display: inline-block;
+}
+
+ul.dates {
+  margin-#{$default-float}: 0;
+  li {
+    list-style: none;
+    margin-bottom: rem-calc(12);
+  }
+}
+
+h2 > ul.action-buttons {
+  margin-top: rem-calc(3);
+}
+
+ul.action-buttons {
+  @include button-group-container();
+  .button {
+    @include button($padding:false, $bg:$royal-purple);
+    &.alert     { @include button-style($bg:$alert-color); };
+    &.active    { @include button-style($bg:$but-5-color); };
+    margin: 0;
+    padding: rem-calc(3) rem-calc(10) rem-calc(4) rem-calc(10);
+    font-size: $button-font-sml;
+  }
+  & > li {
+    @include button-group-style(
+      $radius:$button-round
+    );
+  }
+}
+
+h1 { color: $but-1-color; }
+h2 { color: $royal-purple; }
+.subheader { color: $royal-purple; }
+h3 { color: $but-7-color; }
+h4 { color: $but-7-color; }
+h5 { color: $but-7-color; }
+h6 { color: $but-7-color; }
+
+article > h1 {
+  margin-bottom: rem-calc(30);
+}
+
+p.lead {
+  font-weight: 200;
+  font-size: rem-calc(20);
+}
+
+#map { height: 300px; }
+
+a.button.header-button {
+  margin-top: 20px;
+}
+
+.top-bar {
+  z-index: 1000;
+  li.name img {
+    height: 40px;
+    width: 40px;
+    padding: 0 3px 3px 0;
+    margin-right: 10px;
+  }
+
+  li .dropdown {
+    border: 1px solid $topbar-primary-color;
+  }
+
+  #pages_menu { float: left; }
+
+  #user_menu  {
+    li .dropdown {
+      border-right: none;
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+[data-magellan-expedition] {
+  left: auto !important;
+}
+
+[data-magellan-destination] {
+  padding-top: rem-calc(30);
+}
+
+
+.zeitplan {
+  @include grid-row($behavior: collapse);
+  .day {
+    @media #{$medium-up} {
+      @include grid-column(3, $collapse:true);
+      padding: 0 rem-calc(5) 0 0;
+    }
+    h2 {
+      text-align: center;
+    }
+
+    .timeslots {
+      @media #{$medium-up} {
+        position: relative;
+      }
+      @media #{$small-only} {
+        height: auto !important;
+      }
+      .timeslot {
+        font-weight: 200;
+        strong {
+          font-weight: 400;
+        }
+        color: white;
+        margin-bottom: rem-calc(10);
+        @media #{$small-only} {
+          width: 100% !important;
+          height: auto !important;
+          position: static;
+        }
+        @media #{$medium-up} {
+          position: absolute;
+          overflow: hidden;
+        }
+        padding: rem-calc(1) rem-calc(5);
+        margin: rem-calc(5);
+        box-sizing: border-box;
+        @include radius();
+      }
+      .workshop {
+        background-color: $but-1-color;
+        border: 2px solid $but-1-color;
+      }
+      .meal {
+        background-color: $but-7-color;
+        border: 2px solid $but-7-color;
+      }
+      .social, .tournament {
+        background-color: $royal-purple;
+        border: 2px solid $royal-purple;
+      }
+      .party {
+        background-color: $royal-purple;
+        border: 2px solid $royal-purple;
+      }
+      .plenum {
+        background-color: $but-4-color;
+        border: 2px solid $but-4-color;
+      }
+      .other {
+        background-color: gray;
+        border: 2px solid gray;
+      }
+
+
+    }
+  }
+}
+
+hgroup.jumbo {
+  text-align: center;
+  h1.tagline {
+    font-family: $body-font-family;
+    font-size: rem-calc(35);
+    font-weight: 200;
+    color: $royal-purple;
+  }
+  img.big-logo {
+    @media #{$medium-up} {
+      max-width: 450px;
+    }
+    display: block;
+    margin: 0 auto;
+    padding: rem-calc(50) 0;
+  }
+  .inline-list {
+    display: inline-block;
+    padding: rem-calc(20) 0;
+    li > *  { box-sizing: content-box; }
+    .button { padding: 19px 30px 20px 30px; }
+
+    .border.button {
+      padding: 16px 30px 17px 30px;
+      background: #fff;
+      color: $royal-purple;
+      border: 3px solid $royal-purple;
+      box-shadow: none;
+      -moz-box-shadow: none;
+      transition: all 500ms ease-out;
+      &:hover {
+        color: $royal-purple;
+        border: 3px solid $royal-purple;
+      }
+    }
+  }
+}
+
+.three-columns {
+  columns: 3;
+  -moz-columns: 3;
+  -webkit-columns: 3;
+  margin-bottom: rem-calc(60);
+  h2:first-child { margin-top: 0 }
+}
+
+form .row .columns:first-child { padding-left: 0; }
+
+@media #{$small-only} {
+  form .row .columns { padding-left: 0; padding-right: 0; }
+}
+
+.fa-check.done    { color: $royal-purple; }
+.fa-check.pending { color: #eee; }
+.fa-check.done, .fa-check.pending { margin-top: 0.25em; }
+
+a.clearing-close { text-decoration: none !important }
+
+// fix for subnav
+//.sub-nav dt { padding-top: 1px };
+
+dl.sub-nav dd a { text-decoration: none; }
+
+
+// always use same size for headers
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }

@@ -1,0 +1,52 @@
+- content_for :title do
+  Haus und Gelände
+
+%section.content
+  %article
+    %hgroup
+      %h1 Haus und Gelände
+      %h2.subheader Das nächste Bundestreffen findet in grüner Umgebung im schönen und zentral gelegenen Bundesland Sachsen-Anhalt statt.
+
+    %p
+      #map
+
+  %article
+    %h2 Das KiEZ Arendsee
+    :markdown
+      Das nächste Bundestreffen findet in grüner Umgebung im schönen und zentral gelegenen Bundesland Sachsen-Anhalt statt. Das von uns exklusiv genutzte Gelände liegt direkt neben einem großen See und hat unter anderem folgendes zu bieten:
+
+      * Insgesamt über 300 warme Betten in drei Gästehäusern und sechs Bungalows
+      * Unterbringung in Einzel- bis Viererzimmern
+      * 4 Ferienwohnungen (reserviert für Familien mit Wohnzimmer, kleiner Küche, Bad)
+      * Vollverpflegung
+      * Familiengerecht (Spielplatz, Spielezimmer, Ferienwohnungen)
+      * Barrierefreiheit
+      * Mehrere große Seminarräume und gemütliche Aufenthaltsräume
+      * Eine Freilichtbühne mit Tribüne
+      * Eine Disko und eine Turnhalle
+      * Einen Rotsandplatz, Tischtennisplatten, Beachvolleyballfeld
+      * Eine Minigolfanlage, 4 Bowlingbahnen, Billard, Fußballkicker
+      * Feuerstellen, Grills, Backofen, Seminarküche
+      * 2 Saunen
+
+      Ihr seht, es wird uns an nichts fehlen!
+
+  %article
+    %h2 Fotos vom Haus
+    %ul.small-block-grid-4.clearing-thumbs(data-clearing)
+      - for i in (0..40) do
+        %li
+          %a.th{'href' => image_path("haus/haus_#{i}.jpg")}
+            %img{'src' => image_path("haus/haus_#{i}_small.jpg")}
+
+= content_for(:page_js) do
+  :javascript
+    var map = L.map('map')
+    map.setView([52.8856943, 11.5015922], 14)
+    L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://openstreetmap.org/copyright">OSM</a>',
+      maxZoom: 18
+    }).addTo(map)
+    L.marker([52.8856943, 11.5015922]).addTo(map)
+      .bindPopup('KiEZ Arendsee')
+      .openPopup()

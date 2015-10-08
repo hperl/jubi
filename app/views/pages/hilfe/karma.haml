@@ -1,0 +1,46 @@
+- content_for :topic do
+  Wie das Karma berechnet wird
+
+%p.lead
+  Bei der Einteilung der Workshops versuchen wir, dass alle ihre Erstwahl bekommen. Trotzdem kann es sein, dass beliebte Workshops schneller voll sind und wir deshalb einige nur ihre Zweit- oder Drittwahl bekommen. Wo wir wählen müssen, wollen wir, dass Menschen, die sich auf dem BUT viel engagieren (z.B. grillen, Workshops anbieten oder Sachen im Kiosk verkaufen) bevorzugt werden. Das Karma-System bildet dies ab. Je höher dein Karmawert, desto wahrscheinlicher ist es, dass du deine Erstwahl bekommst.
+
+%p So berechnet sich das Karma:
+%table(width="100%")
+  %tr
+    %th Beschreibung
+    %th Karma
+    - if current_user
+      - for registration in current_user.registrations
+        %th= registration.name
+  %tr
+    %td Karmabonus für das Kernteam
+    %td= Settings.karma.kernteam
+    - if current_user
+      - for registration in current_user.registrations
+        %td= registration.user.kernteam? ? Settings.karma.kernteam : 0
+  %tr
+    %td Karmabonus für das erweiterte Kernteam
+    %td= Settings.karma.extended_kernteam
+    - if current_user
+      - for registration in current_user.registrations
+        %td= registration.user.extended_kernteam? ? Settings.karma.extended_kernteam : 0
+  %tr
+    %td Karmabonus für Workshopanbieter
+    %td= Settings.karma.workshop_owner
+    - if current_user
+      - for registration in current_user.registrations
+        %td= registration.offers_workshop? ? Settings.karma.workshop_owner : 0
+
+  %tr
+    %td Karmabonus für Helferschichten
+    %td je +#{Settings.karma.helper_shift}
+    - if current_user
+      - for registration in current_user.registrations
+        %td= Settings.karma.helper_shift * (registration.helper_shift_timeslots.count + registration.workshop_choices.first_choice.joins(:workshop).where(workshops: {helper_shift: true}).count)
+
+  %tr
+    %th Summe
+    %td
+    - if current_user
+      - for registration in current_user.registrations
+        %th= registration.karma

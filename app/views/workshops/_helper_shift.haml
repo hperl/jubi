@@ -1,0 +1,5 @@
+%h4= workshop.title
+%p
+  = fa_icon 'clock-o fw'
+  = workshop.timeslots.map {|t| timeslot_title(t)}.join(' und ')
+%p= workshop.description

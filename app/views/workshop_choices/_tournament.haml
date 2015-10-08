@@ -1,0 +1,42 @@
+.radius.panel.timeslot.tournament{:class => "timeslot-#{tournament.id}"}
+  %h4= tournament.name
+
+  = fa_icon 'clock-o fw'
+  =l tournament.start.to_date, format: :weekday
+  =l tournament.start, format: :short_time
+  —
+  =l tournament.end, format: :time
+
+  %p= tournament.try(:description)
+
+  - for workshop in tournament.workshops
+    %hr
+
+    %h5
+      = workshop.try(:title)
+
+    %p= workshop.try(:description)
+
+    - with_feature :workshop_choices do
+      - if current_user
+        - for registration in current_user.registrations.payed
+          .clearfix
+            %strong= "Wahl von #{registration.name}"
+            %ul.action-buttons.right
+              - chosen = registration.choice_for_workshop(workshop).try(:choice_type)
+              - choice = 'first_choice'
+              - label = ''
+              - if choice == chosen
+                - label = fa_icon('check fw').html_safe + 'gewählt'
+              - else
+                - label = fa_icon('empty fw').html_safe + 'wählen'
+              - if registration.frozen?
+                - if choice == chosen
+                  %li= label
+                - else
+                  %li nicht gewählt
+              - else
+                %li= link_to label, but_registration_workshop_choices_path(registration, {workshop_id: workshop.id, choice_type: choice}),
+                  class: "button #{(choice == chosen) ? 'active' : ''}", method: :post, remote: true
+
+

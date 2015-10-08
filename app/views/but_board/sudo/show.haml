@@ -1,0 +1,13 @@
+- content_for :subtitle do
+  Benutzer wechseln
+
+%p.lead
+  Hier können wir in den Account eines beliebigen Benutzers schlüpfen. Nützlich für die Fehlersuche.
+
+= simple_form_for User.new, url: switch_but_board_sudo_path do |f|
+  .row
+    .medium-12.columns
+      = f.input :email
+  .row
+    .medium-12.columns
+      = f.submit 'wechseln', class: 'button'
