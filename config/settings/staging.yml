@@ -1,3 +1,6 @@
+basic_auth:
+  name: 'but-team'
+  password: 'Bawread0'
 features:
   #all: true
   login: false
