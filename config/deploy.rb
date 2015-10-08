@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application , 'my_app_name'
-set :repo_url    , 'git@fast-sicher.de:but.git'
+set :repo_url    , 'git@fast-sicher.de:jubi.git'
 set :deploy_via  , :remote_cache
 set :copy_exclude, %w(.git)
 set :use_sudo    , false
