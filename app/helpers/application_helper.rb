@@ -44,4 +44,12 @@ module ApplicationHelper
       "noch #{num} freie Plätze"
     end
   end
+
+  def switch_language_url(url=request.url)
+    new_locale = case I18n.locale
+                 when :de then "en"
+                 when :en then "de"
+                 end
+    URI(url).merge("?locale=#{new_locale}").to_s
+  end
 end

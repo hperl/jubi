@@ -6,8 +6,10 @@
 development:
   adapter: postgresql
   encoding: unicode
+  #host: db
   database: but-development
   username: perl
+  #password: but
   pool: 4
 
 # Warning: The database defined as "test" will be erased and

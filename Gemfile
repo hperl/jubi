@@ -5,9 +5,7 @@ if RUBY_VERSION =~ /1.9/
   Encoding.default_internal = Encoding::UTF_8
 end
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2'
-#gem 'rails', github: 'rails/rails'
 
 # Rails' PJAX
 gem 'turbolinks'
@@ -21,10 +19,10 @@ gem 'high_voltage'
 # authentication
 gem 'devise'
 # authorization
-gem 'cancan'
+gem 'cancancan', '~> 1.10'
 
 # settings
-gem 'rails_config'
+gem 'config', '~> 1.0.0.beta3'
 
 gem 'redcarpet'
 
@@ -59,7 +57,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', require: false
   gem 'rspec-activemodel-mocks'
 end
@@ -72,7 +70,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'haml'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'less-rails'
 gem 'foundation-rails', '5.4.5'
 gem 'font-awesome-rails'
 gem 'simple_form'

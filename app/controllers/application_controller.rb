@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :set_locale
+
   # Protect the staging environment with basic authentication
   if Settings.basic_auth
     http_basic_authenticate_with name: Settings.basic_auth.name,
@@ -14,10 +16,11 @@ class ApplicationController < ActionController::Base
            formats: [:html], status: 403, layout: false
   end
 
-  before_filter do
+  before_action do
     resource = controller_name.singularize.to_sym
     params[resource] &&= filtered_params if respond_to?(:filtered_params, true)
   end
+
 
   def after_sign_in_path_for(resource)
     profile_path
@@ -40,5 +43,10 @@ class ApplicationController < ActionController::Base
   def load_user
     authenticate_user!
     @user = current_user
+  end
+
+  private
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 end

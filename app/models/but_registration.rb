@@ -121,14 +121,17 @@ class ButRegistration < ActiveRecord::Base
   end
 
   def kernteam?
+    return false unless user
     user.kernteam? && user.discount_registration == self
   end
 
   def extended_kernteam?
+    return false unless user
     user.extended_kernteam? && user.discount_registration == self
   end
 
   def offers_workshop?
+    return false unless user
     !user.workshops.empty?
   end
 
@@ -142,7 +145,7 @@ class ButRegistration < ActiveRecord::Base
   def room_prices
     p = Settings.prices.rooms.to_h
     p = p.each {|k,v| p[k] = v * 0.5} if kernteam? || extended_kernteam?
-    RailsConfig::Options.new p
+    return Config::Options.new(p)
   end
 
   def distance_prices
@@ -150,7 +153,7 @@ class ButRegistration < ActiveRecord::Base
     p = Settings.prices.distances.to_h
     p = p.each {|k,v| p[k] = v * 0.0} if kernteam?
     p = p.each {|k,v| p[k] = v * 0.5} if extended_kernteam?
-    RailsConfig::Options.new p
+    return Config::Options.new(p)
   end
 
   def early_bird_price
@@ -170,7 +173,7 @@ class ButRegistration < ActiveRecord::Base
       price = 0
     else
       if cancelled?
-        if updated_at < DateTime.parse('2015-01-01 00:00 +0200')
+        if updated_at < Settings.dates.early_bird_registration_passed
           price = 5
         elsif updated_at > DateTime.parse('2015-03-01 00:00 +0200')
           price *= 0.5

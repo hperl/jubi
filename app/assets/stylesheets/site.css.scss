@@ -216,7 +216,7 @@ a.button.header-button {
     border: 1px solid $topbar-primary-color;
   }
 
-  #pages_menu { float: left; }
+  #language_menu { float: right; }
 
   #user_menu  {
     li .dropdown {
@@ -311,6 +311,7 @@ hgroup.jumbo {
     font-family: $body-font-family;
     font-size: rem-calc(35);
     font-weight: 200;
+    text-align: left;
     color: $royal-purple;
   }
   img.big-logo {

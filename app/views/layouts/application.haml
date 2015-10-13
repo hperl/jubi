@@ -30,49 +30,8 @@
             %i.fa.fa-bars
             Menu
       %section.top-bar-section
-        -#= semantic_navigation :pages_menu do |n|
-          -#- n.item 'Infos', '#' do
-            -#- with_feature :motto do
-              -#- n.item 'Das Motto des BUTs',       page_path('motto')
-            -#- with_feature :haus do
-              -#- n.item 'Über das KIEZ Arendsee',   page_path('haus')
-            -#- with_feature :zeitplan do
-              -#- n.item 'Der Zeitplan des BUTs',    page_path('zeitplan')
-            -#- with_feature :team do
-              -#- n.item 'Das Team stellt sich vor', page_path('team')
-
-          -#- with_feature :login do
-            -#- n.item 'Wer hat sich angemeldet?', page_path('anmeldungen')
-
-          -#- with_feature :mithelfen do
-            -#- n.item 'Mitwirken!',       page_path('mitwirken')
-          -#- with_feature :workshops do
-            -#- n.item 'Workshops', workshops_path
-
-          -#- with_feature :help do
-            -#- n.item "#{fa_icon('life-ring')} Hilfe".html_safe, '#' do
-              -#= render partial: 'help_pages', locals: {n: n}
-
-          -#- with_feature :login do
-            -#- n.item "#{fa_icon('user')} Benutzer".html_safe, profile_path,
-              -#highlights_on: [], hidden_unless: signed_in? do
-              -#- n.item "#{fa_icon('home')} Profil".html_safe,
-                -#profile_path,
-                -#highlights_on: [{controller: 'profiles'},
-                                -#{controller: 'but_registrations'},
-                                -#{controller: 'groups'},
-                                -#{controller: 'payments'}]
-              -#- with_feature :workshop_choices do
-                -#- n.item "#{fa_icon('calendar-o')} Plane dein BUT".html_safe, but_plan_path
-              -#- with_feature :music_wishes do
-                -#- n.item "#{fa_icon('music')} Musikwünsche", music_wishes_path, highlights_on: [{controller: 'music_wishes'}]
-              -#- n.item "#{fa_icon('dashboard')} BUT-Board".html_safe, but_board_path,
-                -#hidden_unless: can?(:view, :but_board)
-              -#%li.divider
-              -#%li
-                -#= link_to "#{fa_icon('sign-out')} abmelden".html_safe,
-                          -#destroy_user_session_path, method: :delete
-            -#- n.item "#{fa_icon('sign-in')} anmelden" , new_user_session_path unless signed_in?
+        = semantic_navigation :language_menu do |n|
+          - n.item fa_icon(:globe, text: t(:switch_language)), switch_language_url
 
   %main
     - if flash[:notice] || flash[:warning] || flash[:alert]

@@ -22,6 +22,7 @@ prices:
     acc_family: 15.00
     acc_single: 20.00
 dates:
+  early_bird_registration_passed: 2015-01-01
   registrations_frozen: 2015-04-15
   votable_without_payment: 2013-04-11
 bank:
@@ -29,7 +30,8 @@ bank:
   iban: "DE 94 2008 0000 0908 0302 00"
   bic: "DRES DE FF 200"
 categories:
-  [ 0 , 2
+  [ 0
+  , 2
   , 2
   , 2
   , 2

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :registrations, class: ButRegistration
+  has_many :registrations, class_name: ButRegistration
   has_many :payments
   has_many :workshops
   has_many :payments_responsible_for, class_name: Payment
