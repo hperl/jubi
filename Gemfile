@@ -35,6 +35,8 @@ gem 'highcharts-rails', '~> 3.0.0'
 gem 'numbers_and_words'
 gem 'rails_autolink'
 
+gem 'http_accept_language'
+
 gem 'exception_notification'
 
 group :doc do
