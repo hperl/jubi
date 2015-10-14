@@ -14,6 +14,7 @@ $but-6-color: rgb(83, 142, 49);
 $but-7-color: rgb(153, 178, 33);
 
 $royal-purple: rgb(100, 40, 104);
+$yfu-text: rgb(85, 85, 85);
 
 $topbar-primary-color: $royal-purple;
 $topbar-secondary-color: $royal-purple;
@@ -55,12 +56,11 @@ $rem-base: $base-font-size;
 // $body-bg: #fff;
 // $body-font-color: #222;
 
-$body-font-family: 'National', sans-serif;
+$body-font-family: 'YFU', sans-serif;
 /*$body-font-weight: 200;*/
 // $body-font-style: normal;
 
-@import url(https://fonts.googleapis.com/css?family=Bitter:400,700,400italic);
-$header-font-family: 'National', serif;
+$header-font-family: 'YFU', serif;
 $header-font-weight: bold;
 $subheader-font-weight: normal;
 $header-top-margin: rem-calc(30);
