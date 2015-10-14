@@ -1,25 +1,40 @@
-@font-face{
-  font-family:'YFU';
-  font-weight:normal;
-  font-style:normal;
-  src:font-url("NationalWeb-Regular.eot?#iefix") format("embedded-opentype"),
-  font-url("NationalWeb-Regular.woff") format("woff")
+
+@font-face {
+	font-family: 'YFU';
+	src: font-url('National-Bold.eot');
+	src: font-url('National-Bold.eot?#iefix') format('embedded-opentype'),
+		font-url('National-Bold.woff') format('woff'),
+		font-url('National-Bold.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
 }
-@font-face{font-family:'YFU';
-  font-weight:normal;
-  font-style:italic;
-  src:font-url("NationalWeb-RegularItalic.eot?#iefix") format("embedded-opentype"),
-  font-url("NationalWeb-RegularItalic.woff") format("woff")
+
+@font-face {
+	font-family: 'YFU';
+	src: font-url('National-BoldItalic.eot');
+	src: font-url('National-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		font-url('National-BoldItalic.woff') format('woff'),
+		font-url('National-BoldItalic.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: italic;
 }
-@font-face{font-family:'YFU';
-  font-weight:bold;
-  font-style:italic;
-  src:font-url("NationalWeb-BoldItalic.eot?#iefix") format("embedded-opentype"),
-  font-url("NationalWeb-BoldItalic.woff") format("woff")
+
+@font-face {
+	font-family: 'YFU';
+	src: font-url('National-BookItalic.eot');
+	src: font-url('National-BookItalic.eot?#iefix') format('embedded-opentype'),
+		font-url('National-BookItalic.woff') format('woff'),
+		font-url('National-BookItalic.ttf')  format('truetype');
+	font-weight: normal;
+	font-style: italic;
 }
-@font-face{font-family:'YFU';
-  font-weight:bold;
-  font-style:normal;
-  src:font-url("NationalWeb-Bold.eot?#iefix") format("embedded-opentype"),
-  font-url("NationalWeb-Bold.woff") format("woff")
+
+@font-face {
+	font-family: 'YFU';
+	src: font-url('National-Book.eot');
+	src: font-url('National-Book.eot?#iefix') format('embedded-opentype'),
+		font-url('National-Book.woff') format('woff'),
+		font-url('National-Book.ttf')  format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
