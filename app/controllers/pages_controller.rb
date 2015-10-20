@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   private
   def layout_for_page
+    raise 'boom'
     if params[:id] =~ /^hilfe\//
       'help'
     else

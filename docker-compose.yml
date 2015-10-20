@@ -1,16 +1,18 @@
 db:
   image: postgres
+  restart: always
   environment:
     POSTGRES_USER: but
     POSTGRES_PASSWORD: but
 web:
   build: .
-  command: sleep 100000000
+  restart: always
+  command: unicorn -c config/unicorn.rb
+  environment:
+    RAILS_ENV: development
   volumes:
     - .:/app
   ports:
-    - '3000:3000'
+    - '8080:8080'
   links:
     - db
-  environment:
-    BUNDLE_PATH: /vendor
