@@ -5,14 +5,6 @@
 // Uncomment to use rem-calc() in your settings
 @import "foundation/functions";
 
-$but-1-color: rgb(30, 29, 117);
-$but-2-color: rgb(10, 45, 111);
-$but-3-color: rgb(0, 75, 102);
-$but-4-color: rgb(0, 94, 67);
-$but-5-color: rgb(0, 115, 51);
-$but-6-color: rgb(83, 142, 49);
-$but-7-color: rgb(153, 178, 33);
-
 $royal-purple: rgb(100, 40, 104);
 $yfu-text: rgb(85, 85, 85);
 
@@ -53,7 +45,7 @@ $rem-base: $base-font-size;
 // $total-columns: 12;
 
 // We use these to control various global styles
-// $body-bg: #fff;
+$body-bg: $royal-purple;
 // $body-font-color: #222;
 
 $body-font-family: 'YFU', sans-serif;
@@ -88,7 +80,7 @@ $panels-margin-bottom: rem-calc(10);
 $primary-color: $royal-purple;
 $secondary-color: $royal-purple;
 // $alert-color: #f04124;
-$success-color: $but-6-color;
+// $success-color: $but-6-color;
 
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;

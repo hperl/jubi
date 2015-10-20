@@ -43,18 +43,6 @@ $(function(){
   })
   $('.timeslots').css('height', totalHeight + 'cm')
 
-  // footer
-  var footer = $(".bottom");
-  var pos = footer.position();
-  var height = $(window).height();
-  height = height - pos.top;
-  height = height - footer.height();
-  if (height > 0) {
-    footer.css({
-      'margin-top': height - 25 + 'px'
-    });
-  }
-
   // ckeditor
   if ($('textarea').length > 0) {
     var el = $('textarea.ckeditor');

@@ -11,7 +11,13 @@
 
 header {
   border-bottom: 1px solid $topbar-primary-color;
-  margin-bottom: rem-calc(30);
+  padding-bottom: 0;
+}
+
+main {
+  padding-top: rem-calc(30);
+  padding-bottom: rem-calc(100);
+  background: #fff;
 }
 
 .button {
@@ -20,8 +26,6 @@ header {
 }
 
 .bottom {
-  background: $royal-purple;
-  margin-top: rem-calc(100);
   padding-bottom: rem-calc(20);
   color: #fff;
   footer {
@@ -168,7 +172,7 @@ ul.action-buttons {
   .button {
     @include button($padding:false, $bg:$royal-purple);
     &.alert     { @include button-style($bg:$alert-color); };
-    &.active    { @include button-style($bg:$but-5-color); };
+    &.active    { @include button-style($bg:$royal-purple); };
     margin: 0;
     padding: rem-calc(3) rem-calc(10) rem-calc(4) rem-calc(10);
     font-size: $button-font-sml;
@@ -179,14 +183,6 @@ ul.action-buttons {
     );
   }
 }
-
-h1 { color: $but-1-color; }
-h2 { color: $royal-purple; }
-.subheader { color: $royal-purple; }
-h3 { color: $but-7-color; }
-h4 { color: $but-7-color; }
-h5 { color: $but-7-color; }
-h6 { color: $but-7-color; }
 
 article > h1 {
   margin-bottom: rem-calc(30);
@@ -276,12 +272,12 @@ a.button.header-button {
         @include radius();
       }
       .workshop {
-        background-color: $but-1-color;
-        border: 2px solid $but-1-color;
+        background-color: $royal-purple;
+        border: 2px solid $royal-purple;
       }
       .meal {
-        background-color: $but-7-color;
-        border: 2px solid $but-7-color;
+        background-color: $royal-purple;
+        border: 2px solid $royal-purple;
       }
       .social, .tournament {
         background-color: $royal-purple;
@@ -292,8 +288,8 @@ a.button.header-button {
         border: 2px solid $royal-purple;
       }
       .plenum {
-        background-color: $but-4-color;
-        border: 2px solid $but-4-color;
+        background-color: $royal-purple;
+        border: 2px solid $royal-purple;
       }
       .other {
         background-color: gray;
