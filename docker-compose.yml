@@ -6,7 +6,6 @@ db:
     POSTGRES_PASSWORD: but
 web:
   build: .
-  restart: always
   command: unicorn -c config/unicorn.rb
   environment:
     RAILS_ENV: development
