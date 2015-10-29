@@ -22,3 +22,5 @@ config/environments/*.local.yml
 *.swp
 
 vendor/bundle
+
+/.idea

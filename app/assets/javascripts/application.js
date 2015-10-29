@@ -13,16 +13,8 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery-ui/effect.all
 //= require foundation
 //= require vendor/modernizr
-//= require leaflet
-//  require ckeditor/override
-//= require ckeditor/init
-//  require turbolinks
-//= require highcharts
-//= require highcharts/highcharts-more
-//= require chartkick
 //= require_tree .
 
 $(function(){
