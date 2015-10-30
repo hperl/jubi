@@ -31,6 +31,8 @@ production:
 staging:
   adapter: postgresql
   encoding: unicode
-  database: but_staging
-  username: deploy
-  pool: 2
+  host: db
+  database: staging
+  username: but
+  password: but
+  pool: 4
