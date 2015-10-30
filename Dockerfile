@@ -5,4 +5,3 @@ WORKDIR /app
 ADD Gemfile.lock /app/Gemfile.lock
 ADD Gemfile /app/Gemfile
 RUN bundle install
-RUN sha1sum Gemfile.lock
