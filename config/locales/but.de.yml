@@ -3,6 +3,39 @@ de:
   index:
     teaser: |
       Mit 60 Jahren <strong>Deutsches Youth For Understanding Komitee e.V.</strong> feiern wir zugleich viele Einzelne, die sich auf vielfältige Weise für gesellschaftliches Lernen engagieren. YFUler aus sechs Jahrzehnten und bald sechzig Ländern teilen viele Erfahrungen miteinander. Im Austausch gewonnene Einsichten motivieren uns, interkulturelles Verständnis, gegenseitigen Respekt und gesellschaftliche Verantwortung zu fördern.<br>Unser <strong>Jubiläums- und Bundestreffen vom 15.&ndash;18. Juni 2017 in Berlin</strong> zeigt das in vielen Facetten.
+
+  team:
+    meet the team:
+      Das Team stellt sich vor
+    Alex Senger:
+      introduction: ''
+    Cornelius Görres:
+      introduction: ''
+    Felix Naumann:
+      introduction: ''
+    Gerrit Rüdebusch:
+      introduction: ''
+    Henning Perl:
+      introduction: ''
+    Marlena Schultz-Brunn:
+      introduction: ''
+    Matthias Otterbach:
+      introduction: ''
+    Monika Keßler:
+      introduction: ''
+    Nick Modersitzki:
+      introduction: ''
+    Simon Born:
+      introduction: ''
+    Simone Stepp:
+      introduction: ''
+    Stefan Timmermann:
+      introduction: ''
+    Theresa Veer:
+      introduction: ''
+    Yannic Schelletter:
+      introduction: ''
+
   # payment state
   cancelled_without_costs: kostenlos storniert
   cancelled: storniert
