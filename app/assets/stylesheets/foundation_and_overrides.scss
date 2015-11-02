@@ -15,6 +15,8 @@ $button-font-sml: rem-calc(14);
 $button-font-med: rem-calc(16);
 $button-font-lrg: rem-calc(18);
 
+$blockquote-font-color: $yfu-text;
+
 $experimental: true;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
@@ -23,7 +25,7 @@ $experimental: true;
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
-$base-font-size: 16px;
+$base-font-size: 18px;
 
 // The $base-line-height is 100% while $base-font-size is 150%
 $base-line-height: 150%;
@@ -46,7 +48,7 @@ $rem-base: $base-font-size;
 
 // We use these to control various global styles
 $body-bg: $royal-purple;
-// $body-font-color: #222;
+$body-font-color: $yfu-text;
 
 $body-font-family: 'YFU', sans-serif;
 /*$body-font-weight: 200;*/
@@ -56,6 +58,7 @@ $header-font-family: 'YFU', serif;
 $header-font-weight: bold;
 $subheader-font-weight: normal;
 $header-top-margin: rem-calc(30);
+$header-font-color: $royal-purple;
 $h1-font-size: rem-calc(30);
 $h2-font-size: rem-calc(22);
 $h3-font-size: rem-calc(20);

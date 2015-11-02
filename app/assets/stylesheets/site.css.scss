@@ -303,6 +303,7 @@ a.button.header-button {
 
 hgroup.jumbo {
   text-align: center;
+  margin-bottom: rem-calc(100);
   .teaser {
     font-family: $body-font-family;
     font-size: rem-calc(32);
@@ -311,14 +312,6 @@ hgroup.jumbo {
     text-align: left;
     color: $yfu-text;
     padding: 1em 0;
-  }
-  img.big-logo {
-    @media #{$medium-up} {
-      max-width: 450px;
-    }
-    display: block;
-    margin: 0 auto;
-    padding: rem-calc(50) 0;
   }
   .inline-list {
     display: inline-block;
@@ -367,11 +360,28 @@ a.clearing-close { text-decoration: none !important }
 
 dl.sub-nav dd a { text-decoration: none; }
 
+@media #{$small-up} {
+  h1 { font-size: $h1-font-size; }
+  h2 { font-size: $h2-font-size; }
+  h3 { font-size: $h3-font-size; }
+  h4 { font-size: $h4-font-size; }
+  h5 { font-size: $h5-font-size; }
+  h6 { font-size: $h6-font-size; } 
+}
 
-// always use same size for headers
-h1 { font-size: $h1-font-size; }
-h2 { font-size: $h2-font-size; }
-h3 { font-size: $h3-font-size; }
-h4 { font-size: $h4-font-size; }
-h5 { font-size: $h5-font-size; }
-h6 { font-size: $h6-font-size; }
+.team-introduction {
+  h1 {
+    text-align: center;
+    font-size: rem-calc(35);
+  }
+
+  ul {
+    @include block-grid(1);
+    @media #{$medium-up} {
+      @include block-grid(3);
+    }
+  }
+  blockquote {
+    font-style: italic;
+  }
+}
