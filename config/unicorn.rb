@@ -12,7 +12,6 @@ when 'development'
 end
 
 if rails_env == 'production' || rails_env == 'staging'
-  user 'deploy', 'deploy'
   working_directory "#{app_path}/current"
   listen "#{app_path}/unicorn.sock"
   timeout 30
