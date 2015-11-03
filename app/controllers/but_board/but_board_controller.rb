@@ -1,6 +1,4 @@
 class ButBoard::ButBoardController < ButBoard::ApplicationController
-  include ProfileHelper
-
   def show
     @users_count         = User.count
     @registrations_count = ButRegistration.payed.count + ButRegistration.unpayed.count
