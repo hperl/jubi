@@ -3,8 +3,7 @@ lock '3.2.1'
 
 set :application , '60jahreyfu'
 set :repo_url    , 'git@fast-sicher.de:jubi.git'
-
-set :log_level   , :debug
+set :log_level   , :info
 
 server '60jahre.yfu.de', user: 'jubi', roles: %w{web app db}
 
