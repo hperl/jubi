@@ -3,23 +3,15 @@ rails_env = ENV['RAILS_ENV'] || 'production'
 case rails_env
 when 'production'
   worker_processes 2
-  app_path = '/srv/apps/but'
 when 'staging'
   worker_processes 1
-  app_path = '/srv/apps/but-staging'
 when 'development'
   worker_processes 1
 end
 
 if rails_env == 'production' || rails_env == 'staging'
-  working_directory "#{app_path}/current"
-  listen "#{app_path}/unicorn.sock"
+  working_directory '/app'
   timeout 30
-
-  pid "#{app_path}/shared/pids/unicorn.pid"
-
-  stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
-  stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
 
   preload_app true
   GC.respond_to?(:copy_on_write_friendly=) and

@@ -1,9 +1,5 @@
-set :deploy_to, '/srv/apps/but-staging'
+set :deploy_to, '/home/jubi/jubi-vorschau'
 set :rails_env, 'staging'
-set :branch,    'master'
-
-set :unicorn_pid, '/srv/apps/but-staging/shared/pids/unicorn.pid'
-set :unicorn_config_path, "#{current_path}/config/unicorn.rb"
 
 namespace :deploy do
   task :copy_db do
@@ -16,5 +12,5 @@ namespace :deploy do
     end
   end
 end
-after 'deploy:updated', 'deploy:copy_db'
+#after 'deploy:updated', 'deploy:copy_db'
 
