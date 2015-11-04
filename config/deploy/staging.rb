@@ -1,4 +1,4 @@
-set :deploy_to, '/home/jubi/jubi-vorschau'
+set :deploy_to, '/home/jubi/staging'
 set :rails_env, 'staging'
 
 namespace :deploy do

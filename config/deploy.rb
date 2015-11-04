@@ -13,9 +13,23 @@ task :deploy do
       execute :git, 'pull'
       execute 'docker-compose', '-f staging.yml', 'run', 'web', 'bundle install'
       execute 'docker-compose', '-f staging.yml', 'run', 'web', 'rake assets:precompile'
+      execute 'docker-compose', '-f staging.yml', 'run', 'web', 'rake db:migrate'
       execute 'docker-compose', '-f staging.yml', 'restart'
     end
   end
 end
+
+task :setup do
+  on roles(:all) do |host|
+    within deploy_to do
+      execute :git, 'pull'
+      execute 'docker-compose', '-f production.yml', 'run', 'web', 'bundle install'
+      execute 'docker-compose', '-f production.yml', 'run', 'web', 'rake db:setup'
+      execute 'docker-compose', '-f production.yml', 'run', 'web', 'rake assets:precompile'
+      execute 'docker-compose', '-f production.yml', 'restart'
+    end
+  end
+end
+
 
 task default: :deploy

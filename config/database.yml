@@ -24,8 +24,10 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: but
-  username: deploy
+  host: db
+  database: production
+  username: but
+  password: but
   pool: 4
 
 staging:

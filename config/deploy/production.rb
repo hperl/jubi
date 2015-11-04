@@ -1,9 +1,5 @@
-set :deploy_to, '/srv/apps/but'
+set :deploy_to, '/home/jubi/production'
 set :rails_env, 'production'
-set :branch,    'master'
-
-set :unicorn_pid, '/srv/apps/but/shared/pids/unicorn.pid'
-set :unicorn_config_path, "#{current_path}/config/unicorn.rb"
 
 namespace :db do
   task :download do
