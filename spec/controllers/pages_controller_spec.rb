@@ -15,5 +15,25 @@ describe PagesController do
         expect(I18n.locale).to eq(:en)
       end
     end
+
+    context "locale set to english in header" do
+      before do
+        @request.headers['X-Locale'] = 'en'
+        get :show, id: 'index'
+      end 
+      it "sets english locale" do
+        expect(I18n.locale).to eq(:en)
+      end
+    end
+
+    context "locale set to german in header" do
+      before do
+        @request.headers['X-Locale'] = 'de'
+        get :show, id: 'index'
+      end 
+      it "sets english locale" do
+        expect(I18n.locale).to eq(:de)
+      end
+    end
   end
 end

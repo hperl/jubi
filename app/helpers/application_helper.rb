@@ -46,10 +46,30 @@ module ApplicationHelper
   end
 
   def switch_language_url(url=request.url)
+    if Rails.env == 'production'
+      domain_localized_uri_for(url)
+    else
+      params_localized_uri_for(url)
+    end
+  end
+
+  private
+  def domain_localized_uri_for(url)
+    new_host = case I18n.locale
+               when :de then '60years.yfu.de'
+               else          '60jahre.yfu.de'
+               end
+    uri = URI(url)
+    uri.host = new_host
+    uri.scheme = 'https'
+    return uri.to_s
+  end
+
+  def params_localized_uri_for(url)
     new_locale = case I18n.locale
                  when :de then "en"
                  when :en then "de"
                  end
-    URI(url).merge("?locale=#{new_locale}").to_s
+    return URI(url).merge("?locale=#{new_locale}").to_s
   end
 end
