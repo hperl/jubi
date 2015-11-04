@@ -30,6 +30,8 @@
             %i.fa.fa-bars
             Menu
       %section.top-bar-section
+        = semantic_navigation :pages_menu do |n|
+          - n.item 'Team', page_path('team')
         = semantic_navigation :language_menu do |n|
           - n.item fa_icon(:globe, text: t(:switch_language)), switch_language_url
 

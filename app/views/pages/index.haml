@@ -1,25 +1,35 @@
 %section.content
-  %hgroup.jumbo
-    = image_tag 'jubi-logo.png'
-    .teaser
-      = t('index.teaser').html_safe
-    = image_tag 'yfu-logo-transparent.png'
+  %article
+    %hgroup.jumbo
+      = image_tag 'jubi-logo.png'
+      .teaser
+        = t('index.teaser_html')
+      = image_tag 'yfu-logo-transparent.png'
 
-  .team-introduction
-    %h1= t('team.meet the team')
-    %ul
-      = render partial: 'team_introduction', locals: {name: 'Alex Senger'}
-      = render partial: 'team_introduction', locals: {name: 'Cornelius Görres'}
-      = render partial: 'team_introduction', locals: {name: 'Felix Naumann'}
-      = render partial: 'team_introduction', locals: {name: 'Gerrit Rüdebusch'}
-      = render partial: 'team_introduction', locals: {name: 'Henning Perl'}
-      = render partial: 'team_introduction', locals: {name: 'Marlena Schultz-Brunn'}
-      = render partial: 'team_introduction', locals: {name: 'Matthias Otterbach'}
-      = render partial: 'team_introduction', locals: {name: 'Monika Keßler'}
-      = render partial: 'team_introduction', locals: {name: 'Nick Modersitzki'}
-      = render partial: 'team_introduction', locals: {name: 'Simon Born'}
-      = render partial: 'team_introduction', locals: {name: 'Simone Stepp'}
-      = render partial: 'team_introduction', locals: {name: 'Stefan Timmermann'}
-      = render partial: 'team_introduction', locals: {name: 'Theresa Veer'}
-      = render partial: 'team_introduction', locals: {name: 'Yannic Schelletter'}
+%section.content
+  %article.half
+    %h2= t('index.exchange stories make an impact.title')
+    = markdown t('index.exchange stories make an impact.text')
 
+    %h2= t('index.exchange stories.title')
+    = markdown t('index.exchange stories.text')
+
+  %article.half
+    %h2= t('index.make an impact.title')
+    = markdown t('index.make an impact.text')
+
+%section.content
+  %article
+    %h2.logo-like= t('index.we want you_html')
+
+%section.content
+  %article.half
+    %h2= t('index.program.title')
+    = markdown t('index.program.text')
+
+    %h2= t('index.educational history tour.title')
+    = markdown t('index.educational history tour.text')
+
+  %article.half
+    %h2= t('index.organizing team.title')
+    = markdown t('index.organizing team.text', team_link: page_path('team'))

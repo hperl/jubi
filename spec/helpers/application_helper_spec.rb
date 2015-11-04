@@ -35,5 +35,10 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe '#markdown' do
+    subject { markdown('**hello** *world* 60@yfu.de').strip }
+    it { is_expected.to eq('<p><strong>hello</strong> <em>world</em> <a href="mailto:60@yfu.de">60@yfu.de</a></p>') }
+  end
 end
 

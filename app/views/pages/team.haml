@@ -4,91 +4,22 @@
 %section.content
   %article
     %hgroup
-      %h1 Das Team stellt sich vor
+      %h1= t('team.meet the team')
 
-    %p
-      %img{'src' => image_path("team.jpg")}
-    %p.lead.text-center
-      Das Team des Bundestreffens 2015 besteht aus (von links nach rechts)
-      Henning Perl,
-      Thekla Welp,
-      Julia Knolle,
-      Nora Schackopp,
-      Katrin Dudek,
-      Nele Altenhein,
-      Clara Perl,
-      Imke Heinze und
-      Triet Vo.
+    .team-introduction
+      %ul
+        = render partial: 'team_introduction', locals: {name: 'Alex Senger'}
+        = render partial: 'team_introduction', locals: {name: 'Cornelius Görres'}
+        = render partial: 'team_introduction', locals: {name: 'Felix Naumann'}
+        = render partial: 'team_introduction', locals: {name: 'Gerrit Rüdebusch'}
+        = render partial: 'team_introduction', locals: {name: 'Henning Perl'}
+        = render partial: 'team_introduction', locals: {name: 'Marlena Schultz-Brunn'}
+        = render partial: 'team_introduction', locals: {name: 'Matthias Otterbach'}
+        = render partial: 'team_introduction', locals: {name: 'Monika Keßler'}
+        = render partial: 'team_introduction', locals: {name: 'Nick Modersitzki'}
+        = render partial: 'team_introduction', locals: {name: 'Simon Born'}
+        = render partial: 'team_introduction', locals: {name: 'Simone Stepp'}
+        = render partial: 'team_introduction', locals: {name: 'Stefan Timmermann'}
+        = render partial: 'team_introduction', locals: {name: 'Theresa Veer'}
+        = render partial: 'team_introduction', locals: {name: 'Yannic Schelletter'}
 
-  %article
-    %h2 Die einzelnen Bereiche
-    %p Wir haben uns in elf Untergruppen organisiert. Hier erfahrt ihr, wer für welche Aufgaben zuständig ist.
-
-  %article.narrow
-    %h3 Checkin
-    %p
-      %img{'src' => image_path("team/checkin.jpg")}
-    %p.text-center Nele, Katrin und Thekla
-
-  %article.narrow
-    %h3 CI und Design
-    %p
-      %img{'src' => image_path("team/ci.jpg")}
-    %p.text-center Julia, Clara und Nora
-
-  %article.narrow
-    %h3 Hauskontakt
-    %p
-      %img{'src' => image_path("team/haus.jpg")}
-    %p.text-center Triet
-
-  %article.narrow
-    %h3 Finanzen
-    %p
-      %img{'src' => image_path("team/finanzen.jpg")}
-    %p.text-center Triet und Julia
-
-  %article.narrow
-    %h3 IT und Homepage
-    %p
-      %img{'src' => image_path("team/it.jpg")}
-    %p.text-center Henning und Thekla
-
-  %article.narrow
-    %h3 Kiosk und Café
-    %p
-      %img{'src' => image_path("team/kiosk.jpg")}
-    %p.text-center Imke, Nele und Thekla
-
-  %article.narrow
-    %h3 Kommunikation
-    %p
-      %img{'src' => image_path("team/kommunikation.jpg")}
-    %p.text-center Clara und Nora
-
-  %article.narrow
-    %h3 Logistik
-    %p
-      %img{'src' => image_path("team/logistik.jpg")}
-    %p.text-center Nele, Imke und Katrin
-
-  %article.narrow
-    %h3 Rahmenprogramm
-    %p
-      %img{'src' => image_path("team/rahmenprogramm.jpg")}
-    %p.text-center Henning, Julia und Nora
-
-  %article.narrow
-    %h3 Risikomanagement
-    %p
-      %img{'src' => image_path("team/risikomanagement.jpg")}
-    %p.text-center Triet und Imke
-
-  %article.narrow
-    %h3 Workshops
-    %p
-      %img{'src' => image_path("team/workshops.jpg")}
-    %p.text-center
-      Clara, Thekla und Nora<br>
-      %a{'href' => 'mailto:workshops@yfu-bundestreffen.de'}
-        workshops@yfu-bundestreffen.de

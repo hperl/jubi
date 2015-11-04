@@ -1,8 +1,51 @@
 en:
   switch_language: Auf Deutsch
   index:
-    teaser: |
+    teaser_html: |
       With the 60<sup>th</sup> anniversary of <strong>YFU Germany</strong> we also celebrate many individuals and their diverse engagement for learning in society. YFU volunteers and staff from six decades and close to sixty countries share many experiences and stories. Insights gained through exchange motivate us to advance intercultural understanding, mutural respect, and social responsibility.<br>Our <strong>anniversary conference in Berlin, 15.&ndash;18. June 2017</strong>, demonstrates that in many facets.
+    we want you_html: |
+      ve vant <strong>you</strong> to make an<br>
+      <strong>impact</strong> on ze <strong>IntConf!</strong>
+    exchange stories make an impact:
+      title: exchange stories make an impact
+      text: |
+        Exchange experiences initiate lasting change. Returnees of all ages know personally what many scientific studies confirm.
+
+        A reception in Berlin on the occasion of 60 years of YFU Germany will celebrate the history and the stories of youth exchanges. 
+
+    exchange stories:
+      title: exchange stories
+      text: |
+        The International Conference and Anniversary will offer countless opportunities to share experiences from six decades and in some sixty countries.
+
+        One particular opportunity will be the big party for everyone. 
+
+    make an impact:
+      title: make an impact
+      text: |
+        For many YFU returnees their exchange experience sustains a sincere motivation to engage for the benefit of their society and to accept responsibility (as volunteers).
+
+        The International Conference and Anniversary shows examples and opportunities in YFU and far beyond . A multi-faceted program of and for YFU people and guests has something to offer for anyone interested.
+
+    program:
+      title: Programm
+      text: |
+        Take part in shaping the International Conference: offer a workshop, a training, a think tank—be it on exchange programs, politics, or philosophy, from arts through best practices to cognition, in sports or in music, or on 60 years YFU! **60@yfu.de**
+    educational history tour:
+      title: Educational History Tour für internationale Gäste
+      text: |
+        International YFU partners will be invited to an Educational Mystery Tour prior to the conference and ending in Berlin. Different tours (4 days or 11 days) will focus on Germany today and in history.
+
+        To help in organizing travel plus overnight stays in host families for the participants and to provide meaningful content we need volunteers all over: **60@yfu.de**
+
+    organizing team:
+      title: Organisationsteam
+      text: |
+        Let us know if you have always wanted to help organize a large event for some 300-400 people, or if you have some experience with that. We will let you know in due time what kind of help we need. 
+
+        We will need helping hands for organization and communication, IT and infrastructure, materials and media, the reception and the party, and a zillion tasks in the youth hostel: **60@yfu.de**
+
+        [Who’s who onboard — the team to-date…](%{team_link})
   team:
     meet the team:
       Meet the Team
