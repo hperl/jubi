@@ -43,37 +43,6 @@ de:
 
         [Wer schon mitmacht – Teamvorstellung…](%{team_link})
 
-    team:
-    meet the team:
-      Das Team stellt sich vor
-    Alex Senger:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Cornelius Görres:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Felix Naumann:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Gerrit Rüdebusch:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Henning Perl:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Marlena Schultz-Brunn:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Matthias Otterbach:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Monika Keßler:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Nick Modersitzki:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Simon Born:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Simone Stepp:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Stefan Timmermann:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Theresa Veer:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
-    Yannic Schelletter:
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
 
   # payment state
   cancelled_without_costs: kostenlos storniert
