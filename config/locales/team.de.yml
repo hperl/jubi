@@ -1,46 +1,74 @@
 de:
   team:
+    job:
+      one: Aufgabe
+      other: Aufgaben
     meet the team:
       Das Team stellt sich vor
     Alex Senger:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Anbindung der LG Berlin
+        - Unterstützung der IT
+        - Externe Kommunikation
+      introduction: „Für die nächsten 60 Jahre YFU wünsche ich mir, dass die Dinge die schon laufen, auch in Zukunft weitergehen." (Andreas Saebeck, Jubiläumslied 2007)
     Cornelius Görres:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Vorankündigung für die internationalen YFU-Partner
+        - Konzeption der Reise für die internationalen Gäste
+        - Mitarbeit an Inhalt und Gestaltung der Homepage
+      introduction: "Ich bin Teil des Teams, um mitzuhelfen, das Jubiläum zu einer vielfältigen Veranstaltung für YFUler aller Altersgruppen, mit den unterschiedlichsten Erfahrungen und aus aller Welt zu machen."
     Felix Naumann:
-      job: Aufgabe
+      job:
+        - Aufgabe
+        - Aufgabe
       introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
     Gerrit Rüdebusch:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Inhaltliche Programmplanung
+      introduction: „Ich bin Teil des Teams, um mit coolen Leuten zusammen dem Jubiläum Leben zu verleihen.“
     Henning Perl:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Homepage und IT
+      introduction: „Austausch wirkt, weil wir nie auslernen und Verständigung und Verständnis überall gebraucht wird.“
     Marlena Schultz-Brunn:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Fundraising und Förderungsmöglichkeiten
+        - Organisation und Gestaltung der Rahmenveranstaltungen im Jubiläumsjahr (Rathausempfang und Empfang beim Bundespräsidenten)
+        - Einbindung der Freunde und Förderer, die dem Verein nahestehen oder mit YFU kooperieren
+      introduction: „Austausch wirkt, weil jeder Einzelne die (YFU-)Welt ein kleines bisschen besser macht! “
     Matthias Otterbach:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Aufgabenfindung
+        - IT
+      introduction: „Für die nächsten 60 Jahre YFU wünsche ich mir, dass wir den Austausch um 60 weitere Länder erweitern können.“
     Monika Keßler:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Finanzen
+      introduction: „Austausch wirkt, weil die leuchtenden Augen meiner Gastschwester aus Osteuropa bei diversen Gegebenheiten nicht lügen konnten.“
     Nick Modersitzki:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Raumfindung für Festakt und Party
+        - Organisation und Gestaltung der großen Party
+      introduction: „Ich bin Teil des Teams, um dem Verein und der YFU-Idee eine würdige Geburtstagsfeier zu bescheren.“
     Simon Born:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Gesamtkoordination
+      introduction: „Austausch wirkt, weil durch das Aufeinandertreffen von Personen unterschiedlicher kultureller Prägung ein Verständigungsprozess gefördert und Bewusstsein für Diversität geschaffen wird, welche die Grundsteine für ein friedvolles, verantwortungsbewusstes und auf Respekt basierendes Zusammenleben bilden.“
     Simone Stepp:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Organisation und Gestaltung der Rahmenveranstaltungen im Jubiläumsjahr (Rathausempfang und Empfang beim Bundespräsidenten)
+        - Mitgestaltung des Festaktes
+        - Einbindung der Alumni, deren Austauschjahr schon etwas länger her ist,
+      introduction: „Ich bin Teil des Teams, da ich gerne dabei mithelfen möchte, dass das 60ste YFU-Jubiläum ein großartiges Erlebnis für Ehrenamtliche, Ehemalige und Freunde des Vereins jeden Alters wird.“
     Stefan Timmermann:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Organisation und Gestaltung des Festaktes und der großen Party
+      introduction: "Für die nächsten 60 Jahre YFU wünsche ich mir, dass weiterhin viele einzigartige Austauschgeschichten geschrieben werden."
     Theresa Veer:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Finanzen und Fundraising
+      introduction: „Austausch wirkt, weil sich Menschen nur durch persönliche Erfahrungen verändern.“
     Yannic Schelletter:
-      job: Aufgabe
-      introduction: Lorem ipsum dolor sit amet, felis duis nullam ac suscipit libero, in lacus tortor consequat laoreet viverra, condimentum consectetuer, eget ac commodo donec quis pellentesque varius. Id lobortis proin ac tempus.
+      job:
+        - Finanzen
+      introduction: „Austausch wirkt, weil er nachhaltig in jungen Menschen etwas verändert und somit auch in der Gesellschaft. Die Lernchancen des Austauschs sind die beste Möglichkeit, die Bedeutung von interkultureller Verständigung, Respekt und Toleranz zu verstehen und zu leben.“

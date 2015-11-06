@@ -1,4 +1,8 @@
 %li
   %h2= name
-  %p= t("team.#{name}.job")
+  %p
+    %strong
+      = succeed ":" do
+        = t('team.job', count: t("team.#{name}.job").count)
+    = t("team.#{name}.job").to_sentence
   %blockquote= t("team.#{name}.introduction")
