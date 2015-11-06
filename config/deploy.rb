@@ -10,6 +10,7 @@ server '60jahre.yfu.de', user: 'jubi', roles: %w{web app db}
 task :deploy do
   on roles(:all) do |host|
     within deploy_to do
+      execute :git, 'reset --hard HEAD'
       execute :git, 'pull'
       execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'bundle install'
       execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'rake assets:precompile'
