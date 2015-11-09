@@ -67,7 +67,7 @@ class ButRegistration < ActiveRecord::Base
   validates :age, numericality:
     { greater_or_equal_to: 0, only_integer: true }
   validate :stays_at_least_one_day
-  validates :address, format: /\d{5}/
+  validates :address, format: /\A\d{5}\z/
   validate :correct_t_shirt_size
   validate :not_cancelled
   validate :not_frozen
