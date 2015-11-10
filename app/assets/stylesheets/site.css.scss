@@ -29,9 +29,6 @@ main {
   padding-bottom: rem-calc(20);
   color: #fff;
   footer {
-    strong {
-      font-weight: 400;
-    }
     @include grid-row();
     & > div {
       padding: rem-calc(20) 0;
@@ -40,7 +37,6 @@ main {
         @include grid-column(4);
       }
       & > p {
-        font-weight: 200;
         font-size: 0.9rem;
         margin: 0;
         padding: rem-calc(8) 0 0 0;
@@ -189,7 +185,6 @@ article > h1 {
 }
 
 p.lead {
-  font-weight: 200;
   font-size: rem-calc(20);
 }
 
@@ -251,10 +246,6 @@ a.button.header-button {
         height: auto !important;
       }
       .timeslot {
-        font-weight: 200;
-        strong {
-          font-weight: 400;
-        }
         color: white;
         margin-bottom: rem-calc(10);
         @media #{$small-only} {
@@ -308,7 +299,6 @@ hgroup.jumbo {
     font-family: $body-font-family;
     font-size: rem-calc(32);
     line-height: 150%;
-    font-weight: 200;
     text-align: left;
     color: $yfu-text;
     padding: 1em 0;
