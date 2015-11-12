@@ -55,34 +55,28 @@
   .bottom
     %footer
       %div
-        %p
-          %strong Impressum<br>
+        %h2=t 'legal info'
         %p= image_tag('yfu-logo.png')
-        %p
-          Das Jubiläum 2017 ist eine Veranstaltung des
-          Deutschen Youth For Understanding Komitees e.V.
+        %p=t 'disclaimer'
       %div
-        %p
-          %strong Anschrift<br>
+        %h2=t 'address'
+        :markdown
           Deutsches Youth For Understanding Komitee e.V. (YFU)<br>
           Oberaltenallee 6<br>
           22081 Hamburg
-        %p
-          Telefon: +49 (0) 40 22 70 02 -0<br>
-          Fax: +49 (0) 40 22 70 02 -27<br>
-          E-Mail:
-          %a(href="mailto:info@yfu.de") info@yfu.de
+
+          #{t 'phone'}: +49 (0) 40 22 70 02 -0<br>
+          #{t 'email'}: <info@yfu.de>, <60@yfu.de>
       %div
+        %h2=t 'board'
         %p
-          %strong Vorstand<br>
           Marcus von Garßen,
           Rita Stegen,
           Elmar Lammerskitten,
           Ricarda Bauch,
           Simon Born
+        %h2 Vereinsregister
         %p
-          %strong Vereinsregister<br>
           Amtsgericht Hamburg, Registernummer VR&nbsp;6999
-
 
   = yield(:page_js)

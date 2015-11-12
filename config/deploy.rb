@@ -16,8 +16,8 @@ task :deploy do
       execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'rake assets:precompile'
       execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'rake db:migrate'
     end
-    invoke 'stop'
-    invoke 'start'
+    # invoke 'stop'
+    invoke 'restart'
   end
 end
 
@@ -45,6 +45,14 @@ task :start do
   on roles(:all) do |host|
     within deploy_to do
       execute 'docker-compose', '-f deploy.yml', 'up -d'
+    end
+  end
+end
+
+task :restart do
+  on roles(:all) do |host|
+    within deploy_to do
+      execute 'docker-compose', '-f deploy.yml', 'restart web'
     end
   end
 end

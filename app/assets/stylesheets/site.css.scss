@@ -26,21 +26,24 @@ main {
 }
 
 .bottom {
-  padding-bottom: rem-calc(20);
-  color: #fff;
+  padding: rem-calc(20) 0;
   footer {
     @include grid-row();
+    h2 { font-size: $base-font-size; color: #fff; }
+    p, h2 {
+      color: #fff;
+      font-size: 0.9rem;
+      margin: 0;
+      padding: 0;
+      a, a:hover { color: #fff; text-decoration: underline }
+    }
+    p  { padding-bottom: rem-calc(8); }
+    /*h2 { padding: rem-calc(8) 0 0 0; }*/
     & > div {
       padding: rem-calc(20) 0;
       @include grid-column(12);
       @media #{$medium-up} {
         @include grid-column(4);
-      }
-      & > p {
-        font-size: 0.9rem;
-        margin: 0;
-        padding: rem-calc(8) 0 0 0;
-        a, a:hover { color: #fff; text-decoration: underline }
       }
     }
   }
