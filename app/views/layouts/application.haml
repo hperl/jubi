@@ -4,7 +4,8 @@
     - if content_for? :title
       = yield :title
       &ndash;
-    YFU Jubiläum 2017
+    YFU
+    =t 'anniversary'
   = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
   = javascript_include_tag "application", "data-turbolinks-track" => true
 
@@ -19,12 +20,7 @@
       %ul.title-area
         %li.name
           %h1
-            = link_to(image_tag('yfu-topnav.png') + 'Jubiläum 2017', root_path,
-              class: 'show-for-small-only')
-            = link_to(image_tag('yfu-topnav.png') + 'Jubiläum 2017', root_path,
-              class: 'show-for-medium-only')
-            = link_to(image_tag('yfu-topnav.png') + 'Jubiläum 2017', root_path,
-              class: 'show-for-large-up')
+            = link_to(image_tag('yfu-topnav.png') + t('anniversary'), root_path)
         %li.toggle-topbar
           %a(href='#')
             %i.fa.fa-bars
