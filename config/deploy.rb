@@ -4,32 +4,71 @@ lock '3.2.1'
 set :application , '60jahreyfu'
 set :repo_url    , 'git@fast-sicher.de:jubi.git'
 set :log_level   , :info
+set :deploy_to   , '/home/jubi/homepage'
 
 server '60jahre.yfu.de', user: 'jubi', roles: %w{web app db}
 
 task :deploy do
   on roles(:all) do |host|
+    invoke 'update_code'
+    invoke 'build'
+    invoke 'start_container'
+  end
+end
+
+task :update_code do
+  on roles(:all) do |host|
     within deploy_to do
-      execute :git, 'reset --hard HEAD'
-      execute :git, 'pull'
-      execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'bundle install'
-      execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'rake assets:precompile'
-      execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'rake db:migrate'
+      within fetch(:stage) do
+        execute :git, 'reset --hard HEAD'
+        execute :git, 'pull'
+      end
     end
-    invoke 'stop'
-    invoke 'restart'
+  end
+end
+
+task :build do
+  on roles(:all) do |host|
+    within deploy_to do
+      execute 'docker-compose', 'run', fetch(:stage), 'bundle install'
+      execute 'docker-compose', 'run', fetch(:stage), 'rake assets:precompile'
+      execute 'docker-compose', 'run', fetch(:stage), 'rake db:migrate'
+    end
+  end
+end
+
+task :start_container do
+  on roles(:all) do |host|
+    within deploy_to do
+      execute 'docker-compose', 'build', fetch(:stage)
+      execute 'docker-compose', 'up -d', fetch(:stage)
+    end
+    invoke 'status'
+  end
+end
+
+task :status do
+  on roles(:all) do |host|
+    within deploy_to do
+      puts capture('docker-compose', 'ps')
+    end
   end
 end
 
 task :setup do
   on roles(:all) do |host|
     within deploy_to do
-      execute :git, 'pull'
-      execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'bundle install'
-      execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'rake db:setup'
-      execute 'docker-compose', '-f deploy.yml', 'run', 'web', 'rake assets:precompile'
+      %w(staging production).each do |stage|
+        execute :mkdir, '-p', File.join('sockets', stage)
+      end
+
+      %w(staging production).each do |stage|
+        unless test "[ -d #{File.join deploy_to, stage} ]"
+          execute :git, "clone git@github.com:hperl/jubi.git #{stage}"
+        end
+        execute 'docker-compose', 'run', stage, 'rake db:setup'
+      end
     end
-    invoke 'start'
   end
 end
 

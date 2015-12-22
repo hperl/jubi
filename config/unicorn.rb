@@ -11,6 +11,7 @@ end
 
 if rails_env == 'production' || rails_env == 'staging'
   working_directory '/app'
+  listen "/socket/unicorn.sock"
   timeout 30
 
   preload_app true

@@ -1,4 +1,3 @@
-set :deploy_to, '/home/jubi/production'
 set :rails_env, 'production'
 
 namespace :db do
