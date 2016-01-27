@@ -30,9 +30,9 @@ end
 task :build do
   on roles(:all) do |host|
     within deploy_to do
-      execute 'docker-compose', 'run', fetch(:stage), 'bundle install'
-      execute 'docker-compose', 'run', fetch(:stage), 'rake assets:precompile'
-      execute 'docker-compose', 'run', fetch(:stage), 'rake db:migrate'
+      execute 'docker-compose', 'run', '--rm', fetch(:stage), 'bundle install'
+      execute 'docker-compose', 'run', '--rm', fetch(:stage), 'rake assets:precompile'
+      execute 'docker-compose', 'run', '--rm', fetch(:stage), 'rake db:migrate'
     end
   end
 end
@@ -66,7 +66,7 @@ task :setup do
         unless test "[ -d #{File.join deploy_to, stage} ]"
           execute :git, "clone git@github.com:hperl/jubi.git #{stage}"
         end
-        execute 'docker-compose', 'run', stage, 'rake db:setup'
+        execute 'docker-compose', 'run', '--rm', stage, 'rake db:setup'
       end
     end
   end
