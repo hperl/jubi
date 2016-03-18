@@ -28,8 +28,24 @@
       %section.top-bar-section
         = semantic_navigation :pages_menu do |n|
           - n.item 'Team', page_path('team')
+
+        = semantic_navigation :user_menu do |n|
+          - with_feature :login do
+            - n.item fa_icon(:user, text: t(:user)), profile_path, highlights_on: [], hidden_unless: signed_in? do
+              - n.item fa_icon(:home, text: t(:profile)), profile_path,
+                highlights_on: [{controller: 'profiles'},
+                                {controller: 'but_registrations'},
+                                {controller: 'groups'},
+                                {controller: 'payments'}]
+              - n.item fa_icon(:dashboard, text: 'BUT-Board'), but_board_path, hidden_unless: can?(:view, :but_board)
+              %li.divider
+              %li
+                = link_to fa_icon(:sign_out, text: t(:sign_out)), destroy_user_session_path, method: :delete
+            - n.item fa_icon(:sign_in, text: t(:sign_in)), new_user_session_path unless signed_in?
+
         = semantic_navigation :language_menu do |n|
           - n.item fa_icon(:globe, text: t(:switch_language)), switch_language_url
+
 
   %main
     - if flash[:notice] || flash[:warning] || flash[:alert]

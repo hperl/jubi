@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -8,15 +9,18 @@
 #
 
 # init kernteam
-["triet.vo@yfu-deutschland.de",
- "imke.heinze@yfu-deutschland.de",
- "nele.alt@gmail.com",
- "thekla.welp@yfu-deutschland.de",
- "katrin.dudek@googlemail.com",
- "henning.perl@yfu-deutschland.de",
- "clara.perl@yfu-deutschland.de",
- "julia.knolle@yfu-deutschland.de",
- "nora.schackopp@yfu-deutschland.de"].each do |email|
+[
+  "henning.perl@yfu-deutschland.de",
+  "cg@culture-options.de",
+  "schultz-brunn@yfu.de",
+  "simon.born@yfu.de",
+  "stepp@yfu.de",
+  "nick.modersitzki@yfu-deutschland.de",
+  "yannic.schelletter@yfu-deutschland.de",
+  "veer@yfu.de",
+  "stefan.timmermann@yfu-deutschland.de",
+  "alexander.senger@yfu-deutschland.de",
+].each do |email|
    if User.find_by_email(email).nil?
     u = User.new(email: email, password: 'OaksIctocTrunjest', intranet_user: true, kernteam: true)
     u.skip_confirmation!

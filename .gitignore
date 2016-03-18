@@ -20,6 +20,7 @@ config/settings/*.local.yml
 config/environments/*.local.yml
 
 *.swp
+.DS_Store
 
 vendor/bundle
 

@@ -1,6 +1,7 @@
 de:
   anniversary: Jubiläum 2017
   switch_language: Switch to English
+  sign_in: Einloggen
 
   # payment state
   cancelled_without_costs: kostenlos storniert
@@ -31,48 +32,6 @@ de:
   sex_male: männlich
   sex_female: weiblich
   sex_other: egal
-
-  checkin_do: Donnerstag
-  checkin_fr: Freitag
-  checkin_sa: Samstag
-  checkin_so: Sonntag
-
-  checkout_do: Donnerstag
-  checkout_fr: Freitag
-  checkout_sa: Samstag
-  checkout_so: Sonntag
-
-  checkin_9:   9:00 Uhr
-  checkin_10: 10:00 Uhr
-  checkin_11: 11:00 Uhr
-  checkin_12: 12:00 Uhr
-  checkin_13: 13:00 Uhr
-  checkin_14: 14:00 Uhr
-  checkin_15: 15:00 Uhr
-  checkin_16: 16:00 Uhr
-  checkin_17: 17:00 Uhr
-  checkin_18: 18:00 Uhr
-  checkin_19: 19:00 Uhr
-  checkin_20: 20:00 Uhr
-  checkin_21: 21:00 Uhr
-  checkin_22: 22:00 Uhr
-  checkin_23: 23:00 Uhr
-
-  checkout_9:   9:00 Uhr
-  checkout_10: 10:00 Uhr
-  checkout_11: 11:00 Uhr
-  checkout_12: 12:00 Uhr
-  checkout_13: 13:00 Uhr
-  checkout_14: 14:00 Uhr
-  checkout_15: 15:00 Uhr
-  checkout_16: 16:00 Uhr
-  checkout_17: 17:00 Uhr
-  checkout_18: 18:00 Uhr
-  checkout_19: 19:00 Uhr
-  checkout_20: 20:00 Uhr
-  checkout_21: 21:00 Uhr
-  checkout_22: 22:00 Uhr
-  checkout_23: 23:00 Uhr
 
   first_choice: Erste Wahl
   second_choice: Zweite Wahl

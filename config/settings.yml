@@ -25,6 +25,8 @@ dates:
   early_bird_registration_passed: 2015-01-01
   registrations_frozen: 2015-04-15
   votable_without_payment: 2013-04-11
+  conference_start: 2017-07-15T15:00:00+02:00
+  conference_end: 2017-07-18T15:00:00+02:00
 bank:
   account: "Deutsches YFU Komitee e.V."
   iban: "DE 94 2008 0000 0908 0302 00"

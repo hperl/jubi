@@ -30,6 +30,7 @@
             - unless current_user.workshops.empty?
               - for workshop in current_user.workshops
                 - n.item workshop.title, edit_workshop_path(workshop)
+          - with_feature :workshops do
             - n.item fa_icon('plus fw', class: 'right', text: 'Workshop anbieten'), new_workshop_path
             - n.item fa_icon('check fw', class: 'right', text: 'Workshop-Einteilungen'), ws_results_path
 
