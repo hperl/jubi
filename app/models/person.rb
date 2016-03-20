@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class Person < ActiveRecord::Base
+  # The Person model stores the personal information of an attendee
+
   belongs_to :user
 
   enum lg: %w(keine Berlin Bayern Brandenburg-Mecklenburg-Vorpommern Main-Rhein-Saar Hamburg Mitteldeutschland Nord-West Niedersachsen-Hannover Rheinland Schleswig-Holstein Südwest Westfalen)

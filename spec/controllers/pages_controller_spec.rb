@@ -20,7 +20,7 @@ describe PagesController do
       before do
         @request.headers['X-Locale'] = 'en'
         get :show, id: 'index'
-      end 
+      end
       it "sets english locale" do
         expect(I18n.locale).to eq(:en)
       end
@@ -30,7 +30,7 @@ describe PagesController do
       before do
         @request.headers['X-Locale'] = 'de'
         get :show, id: 'index'
-      end 
+      end
       it "sets english locale" do
         expect(I18n.locale).to eq(:de)
       end

@@ -1,0 +1,169 @@
+= simple_form_for @conference_registration  do |f|
+  - if @conference_registration.errors.any?
+    .row
+      .medium-12.columns
+        .callout.panel
+          %h5 Deine Anmeldung konnte nicht gespeichert werden.
+          %ul
+            - for msg in @conference_registration.errors.full_messages
+              %li= msg
+
+  .row
+    .medium-12.columns
+      .callout.panel
+        :markdown
+          Ab dem **#{l(Settings.dates.registrations_frozen)}** ist es nicht mehr möglich, die Anmeldung zu bearbeiten. Der Grund hierfür ist, dass wir danach gesammelt alle T-Shirts bestellen, Zimmer einteilen, Namensschilder drucken und vieles mehr für das BUT vorbereiten wollen und dafür einen finalen Stand brauchen.
+
+  -# .row
+  -#   .medium-6.columns
+  -#     = f.input :name
+  -#   .medium-6.columns
+  -#     = f.input :nickname
+  -# .row
+  -#   .medium-3.columns
+  -#     = f.input :age
+  -#   .medium-3.columns
+  -#     = f.input :sex, collection: ButRegistration.sexes.to_a.map {|a| [t(a.first), a.first]}
+  -#   .medium-6.columns
+  -#     = f.input :lg, collection: ButRegistration.lgs.to_a.map {|a| [a.first, a.first]}, include_blank: false
+  -# .row
+  -#   .medium-12.columns
+  -#     .field_with_hint
+  -#       = f.input :address
+  -#       #address-category.hint
+
+  .row.toddlers
+    .medium-12.columns
+      .callout.radius.panel
+        %p
+          Kinder unter drei Jahren nehmen kostenlos am BUT teil. Wir empfehlen dir, in der Anmeldung der Eltern entweder ein <strong>Einzelzimmer</strong>, <strong>Doppelzimmer</strong> oder ein <strong>Familienzimmer</strong> zu buchen.
+
+  .row.no-toddlers
+    .medium-12.columns
+      %fieldset
+        %legend Essen
+        .radios
+          = enum_radio_buttons(f, :diet)
+        = f.text_field :diet_other
+
+
+  .row.no-toddlers
+    .medium-12.columns
+      %fieldset
+        %legend Unterkunft
+        %p
+          %label Ich möchte schlafen in einem ...
+          .radios
+            -# = enum_radio_buttons(f, :accomodation, {disabled: lambda{|e| e.first == 'acc_family' || e.first == 'acc_single' || e.first == 'acc_double'} }) { |a| |
+            -#     s = "#{t(a)} (+ #{number_to_currency @conference_registration.room_prices[a]})".html_safe; |
+            -#     if a == 'acc_family' || a == 'acc_single' || a == 'acc_double'; |
+            -#       s = '<span class="label">ausgebucht</span> '.html_safe + s; |
+            -#     end; |
+            -#     s; |
+            -#   } |
+
+        %p#together-with
+          %label ... zusammen mit ...
+          %input{:id => "conference_registration_room_mates_none", :name => "conference_registration[room_mates]",
+                 :type => "radio", :value => "room_mates_none", :checked => @conference_registration.room_mates_none?}
+          %label(for="conference_registration_room_mates_none") egal wem
+          %br
+          %input{:id => "conference_registration_room_mates_group", :name => "conference_registration[room_mates]",
+                 :type => "radio", :value => "room_mates_group", :checked => @conference_registration.room_mates_group?}
+          %label(for="conference_registration_room_mates_group" style="margin-top: 8px") Leuten der Gruppe
+          = select_tag "conference_registration[accomodation_group_id]",
+            options_from_collection_for_select(current_user.groups + current_user.owned_groups, "id", "name"),
+            {class: 'small-6'}
+          %br
+          %input{:id => "conference_registration_room_mates_other_registrations", :name => "conference_registration[room_mates]",
+                 :type => "radio", :value => "room_mates_other_registrations", :checked => @conference_registration.room_mates_other_registrations?}
+          %label(for="conference_registration_room_mates_other_registrations")
+            anderen Leute, die ich registriert habe
+            (momentan #{current_user.registrations.reject {|r| r == @conference_registration}.map(&:name).join(', ')})
+        %p
+
+  .row.no-toddlers
+    .medium-12.columns
+      %fieldset
+        %legend Das BUT tragen
+        .row
+          .medium-6.columns
+            %p
+              Als Teil deines Begrüßungspakets auf dem BUT bekommst du ein T-Shirt mit dem BUT-Logo. Wir brauchen nur deine Kleidergröße, damit wir das T-Shirt für dich passend bestellen können.
+              %ul.inline-list
+                %li Mehr Infos zu
+                %li= link_to "Kindergrößen (PDF)", "http://www.fruitoftheloom.eu/public/pdf/imprint2015/en/61-033-0.pdf", target: '_blank'
+                %li= link_to "Frauenschnitte (PDF)", "http://www.fruitoftheloom.eu/public/pdf/imprint2015/en/61-372-0.pdf", target: '_blank'
+                %li= link_to "Männerschnitte (PDF)", "http://www.fruitoftheloom.eu/public/pdf/imprint2015/en/61-036-0.pdf", target: '_blank'
+              -# = f.input :t_shirt_size,
+              -#   as: :grouped_select,
+              -#   collection: ConferenceRegistration::T_SHIRT_SIZES,
+              -#   group_method: :last
+
+          .medium-6.columns
+            %p.right
+              %ul.clearing-thumbs(data-clearing)
+                %li
+                  %a.th{'href' => image_path("t-shirt.png")}
+                    %img{'src' => image_path("t-shirt_small.png"), 'width' => '100%'}
+
+  .row.no-toddlers
+    .medium-12.columns
+      %fieldset
+        %legend Das BUT rocken
+        %p
+          %label
+            Wir brauchen immer Leute, die auf dem BUT aushelfen wollen.
+            Mehr Informationen zu den einzelnen Aufgaben findet ihr unter
+          -#   = succeed '.' do
+          -#     = link_to 'Mitwirken', page_path('mitwirken')
+          -# - %w(freestyler checkin party kiosk grillen ersthelfer).each do |s|
+          -#   = f.input "wants_to_help_#{s}",
+          -#     label: t("simple_form.labels.conference_registration.wants_to_help_#{s}_html")
+        %p
+          %label ... oder einen Workshop anbieten wollen.
+          -# = f.input :wants_to_offer_workshop
+
+  .row.no-toddlers
+    .medium-12.columns
+      %fieldset
+        %legend Über's BUT erzählen
+        %p
+          %label
+            Wenn du zustimmst, führen wir deinen Namen in der
+            = link_to 'Liste der Anmeldungen', page_path('anmeldungen')
+            auf. Du kannst andere (freigegebene) Anmeldungen nur sehen, wenn du selbst zugestimmt hast.
+          -# = f.input :visible
+
+  .row
+    .medium-12.columns
+      %fieldset
+        %legend Kommentare und Anmerkungen?
+        %p
+          Wenn du uns bezüglich deiner Anmeldung noch etwas mitteilen möchtest, kannst du es hier loswerden.
+        %p
+          = f.text_area :comment
+
+  -# .row
+  -#   %h2.subheader Kosten
+  -#   %p Für eine detailierte Erklärung siehe #{link_to 'Preise', page_path('preise')}.
+  -#   %table
+  -#     %tr.no-toddlers
+  -#       %th Grundgebühr Registrierung
+  -#       %td.right#registrationPrice= number_to_currency @conference_registration.registration_price
+  -#     %tr.no-toddlers
+  -#       %th Zimmeraufschlag
+  -#       %td.right#roomPrice= number_to_currency @conference_registration.room_prices.acc_dorm
+  -#     %tr.no-toddlers
+  -#       %th Fahrtkostenumlage
+  -#       %td.right#categoryPrice
+  -#     %tr.no-toddlers
+  -#       %th Frühbucherrabatt
+  -#       %td.right#categoryPrice= number_to_currency @conference_registration.early_bird_price
+  -#     %tr
+  -#       %th Gesamtpreis
+  -#       %td.right
+  -#         %strong#totalPrice
+
+  - unless @conference_registration.frozen?
+    = f.button :submit

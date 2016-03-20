@@ -34,7 +34,7 @@
             - n.item fa_icon(:user, text: t(:user)), profile_path, highlights_on: [], hidden_unless: signed_in? do
               - n.item fa_icon(:home, text: t(:profile)), profile_path,
                 highlights_on: [{controller: 'profiles'},
-                                {controller: 'but_registrations'},
+                                {controller: 'conference_registrations'},
                                 {controller: 'groups'},
                                 {controller: 'payments'}]
               - n.item fa_icon(:dashboard, text: 'BUT-Board'), but_board_path, hidden_unless: can?(:view, :but_board)

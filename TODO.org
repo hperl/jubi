@@ -1,0 +1,9 @@
+* Anmeldung
+** Geburtsdatum statt Alter
+** Optional: Handynummer
+** Optional: Abgleich mit Intranet
+* Karma
+** Nenn sie Impact Points
+* Workshopbeschreibung
+** Sprache
+** Mottobezug: Impact

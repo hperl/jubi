@@ -1,24 +1,28 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :registrations, class_name: ButRegistration
+
   has_many :payments
   has_many :workshops
   has_many :payments_responsible_for, class_name: Payment
   has_and_belongs_to_many :groups
   has_many :owned_groups, class_name: Group, foreign_key: :owner_id
 
+  has_many :people
+  has_many :conference_registrations
+  has_many :party_registrations
+
   serialize :remembered_workshop_ids, Array
 
-  # if there are registrations, the displayname is the concatenation of the
-  # names used to register. If they share a common family name it is included
-  # only once for a shorter displayname
+  # if there are people associated with this user, the displayname is the
+  # concatenation of those names. If they share a common family name it is
+  # included only once for a shorter displayname.
   def displayname
-    case registrations.length
+    case people.length
     when 0 then return email
-    when 1 then return registrations.first.name
+    when 1 then return people.first.name
     else
-      names = registrations.map {|r| r.name.split }
+      names = people.map {|r| r.name.split }
       if names.map {|n| n[1..-1]}.uniq.length == 1
         names = names[0..-2].map {|n| [n.first]} + [names[-1]]
       end
@@ -36,6 +40,10 @@ class User < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def registrations
+    return conference_registrations + party_registrations
   end
 
   def balance

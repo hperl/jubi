@@ -12,12 +12,12 @@
           - with_feature :photos do
             - n.item fa_icon('camera fw', class: 'right', text: 'Fotos'), photos_path
 
-          %li.heading BUT-Anmeldungen
+          %li.heading Anmeldungen
           - unless current_user.registrations.empty?
             - for registration in current_user.registrations
-              - n.item registration.name, edit_but_registration_path(registration)
+              - n.item registration.name, edit_conference_registration_path(registration)
           - without_feature :no_more_registrations do
-            - n.item fa_icon('plus fw', class: 'right', text: 'Neue Anmeldung'), new_but_registration_path
+            - n.item fa_icon('plus fw', class: 'right', text: 'Neue Anmeldung'), new_conference_registration_path
 
           %li.heading Gruppen
           - unless current_user.groups.empty? && current_user.owned_groups.empty?

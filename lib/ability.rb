@@ -12,9 +12,9 @@ class Ability
     # rights for registered users
     unless user.new_record?
       # can create new workshop/regsitration, manage own
-      can :create, [Workshop, ButRegistration]
+      can :create, [Workshop, ConferenceRegistration, PartyRegistration]
       can :crud, Workshop, owner: user
-      can :manage, ButRegistration, user: user
+      can :manage, [ConferenceRegistration, PartyRegistration], user: user
       can :remember, Workshop
       can :read, Payment
 

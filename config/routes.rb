@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 include Features
 
 ButWebsite::Application.routes.draw do
@@ -31,7 +32,7 @@ ButWebsite::Application.routes.draw do
         registration_methods << 'new'
         registration_methods << 'create'
       end
-      resources :but_registrations, only: registration_methods, path: 'but-anmeldung' do
+      resources :conference_registrations, only: registration_methods, path: 'but-anmeldung' do
         with_feature :workshop_choices do
           resources :workshop_choices, only: %w(create), path: 'workshopwahl'
           resources :timeslots, only: [] do
