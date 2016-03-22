@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209152428) do
+ActiveRecord::Schema.define(version: 20160320162305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20160209152428) do
   create_table "conference_registrations", force: :cascade do |t|
     t.datetime "arrival",                   null: false
     t.datetime "departure",                 null: false
-    t.integer  "sex",          default: 0,  null: false
     t.integer  "accomodation", default: 0,  null: false
     t.integer  "room_mates",   default: 0,  null: false
     t.integer  "diet",         default: 0,  null: false
@@ -117,6 +116,7 @@ ActiveRecord::Schema.define(version: 20160209152428) do
     t.integer  "user_id",                    null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "gender",     default: 0,     null: false
   end
 
   create_table "timeslots", force: :cascade do |t|

@@ -1,16 +1,15 @@
 require 'rails_helper'
 
 describe ConferenceRegistrationsController do
-  # describe "POST create" do
-  #   let(:conference_registration) { mock_model(ConferenceRegistration).as_null_object }
+  context "logged in user" do
+    login_user
 
-  #   before { ConferenceRegistration.stub(:new).and_return(conference_registration) }
-
-  #   it "saves the registration" do
-  #     ConferenceRegistration.should_receive(:new).and_return(conference_registration)
-  #     post :create, conference_registration: {}
-  #   end
-
-  #   it "redirects to profile"
-  # end
+    describe "GET new" do
+      it "sets the person" do
+        get 'new'
+        registration = assigns(:conference_registration)
+        expect(registration.person).to be_a(Person)
+      end
+    end
+  end
 end

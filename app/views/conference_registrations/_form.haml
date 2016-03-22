@@ -14,23 +14,30 @@
         :markdown
           Ab dem **#{l(Settings.dates.registrations_frozen)}** ist es nicht mehr möglich, die Anmeldung zu bearbeiten. Der Grund hierfür ist, dass wir danach gesammelt alle T-Shirts bestellen, Zimmer einteilen, Namensschilder drucken und vieles mehr für das BUT vorbereiten wollen und dafür einen finalen Stand brauchen.
 
-  -# .row
-  -#   .medium-6.columns
-  -#     = f.input :name
-  -#   .medium-6.columns
-  -#     = f.input :nickname
-  -# .row
-  -#   .medium-3.columns
-  -#     = f.input :age
-  -#   .medium-3.columns
-  -#     = f.input :sex, collection: ButRegistration.sexes.to_a.map {|a| [t(a.first), a.first]}
-  -#   .medium-6.columns
-  -#     = f.input :lg, collection: ButRegistration.lgs.to_a.map {|a| [a.first, a.first]}, include_blank: false
-  -# .row
-  -#   .medium-12.columns
-  -#     .field_with_hint
-  -#       = f.input :address
-  -#       #address-category.hint
+
+  .row
+    .medium-12.columns
+      %fieldset
+        %legend Persönliche Informationen
+        = simple_fields_for @conference_registration.person do |p|
+          .row
+            .medium-6.columns
+              = p.input :name
+            .medium-6.columns
+              = p.input :nickname
+          .row
+            .medium-3.columns
+              = p.input :age
+            .medium-3.columns
+              = p.input :gender, collection: Person.genders.to_a.map {|a| [t(a.first), a.first]}
+            .medium-6.columns
+              = p.input :lg, collection: Person.lgs.to_a.map {|a| [a.first, a.first]}, include_blank: false
+          .row
+            .medium-12.columns
+              .field_with_hint
+                = p.input :address
+                #address-category.hint
+
 
   .row.toddlers
     .medium-12.columns

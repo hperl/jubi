@@ -5,6 +5,7 @@ class ConferenceRegistrationsController < ApplicationController
 
   # methods: new, create, edit, update
   def new
+    @conference_registration.person ||= Person.new
   end
 
   def edit

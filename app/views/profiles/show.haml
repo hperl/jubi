@@ -1,20 +1,20 @@
 %article
   %hgroup
     %h1 Dein Profil
-    %h2.subheader= @user.displayname
+    %h2.subheader= current_user.displayname
 
   .panel.callout.radius
     %h5
       Kontostand:
-      = number_to_currency @user.balance
+      = number_to_currency current_user.balance
       = link_to 'Kontoübersicht', payments_path, class: "right"
-    - if @user.balance > 0
+    - if current_user.balance > 0
       %p
         Bitte wende dich an <a href="mailto:julia.knolle@yfu-deutschland.de">Julia Knolle</a>, damit sie dir das restliche Geld zurück überweisen kann.
-    - if @user.balance < 0
+    - if current_user.balance < 0
       %p
         Bitte überweise
-        = number_to_currency -@user.balance
+        = number_to_currency -current_user.balance
         an
         %br
         Empfänger
@@ -29,13 +29,13 @@
         Betreff:
         %strong
           BUT 2015 Konto ID
-          = @user.id
+          = current_user.id
       %p
         %strong Wichtig:
         Du bist erst dann fest für das Bundestreffen angemeldet, wenn du bezahlt hast.
 
   %h2 BUT-Anmeldung
-  - if @user.registrations.empty?
+  - if current_user.registrations.empty?
     %p Du bist noch nicht für das BUT angemeldet.
   - else
     %table
@@ -49,7 +49,7 @@
           %th Preis
           %th
       %tbody
-        - for registration in @user.registrations
+        - for registration in current_user.registrations
           %tr
             %td
               = registration.name
@@ -78,7 +78,7 @@
     = link_to 'Hilfe zur Anmeldung', page_path('hilfe/anmeldung'), class: 'small secondary button'
 
   %h2 Gruppen
-  - if @user.groups.empty? && @user.owned_groups.empty?
+  - if current_user.groups.empty? && current_user.owned_groups.empty?
     %p Du bist noch in keinen Gruppen.
   - else
     %table
@@ -88,7 +88,7 @@
           %th
           %th Aktionen
       %tbody
-        - for group in @user.owned_groups + @user.groups
+        - for group in current_user.owned_groups + current_user.groups
           %tr
             %td= link_to group.name, group_path(group)
             %td
