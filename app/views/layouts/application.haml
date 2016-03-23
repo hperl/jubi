@@ -16,7 +16,7 @@
   = csrf_meta_tags
 %body.site
   %header
-    %nav.top-bar(data-topbar data-options="back_text: « zurück")
+    %nav.top-bar(data-topbar data-options="back_text: « back")
       %ul.title-area
         %li.name
           %h1
@@ -28,6 +28,7 @@
       %section.top-bar-section
         = semantic_navigation :pages_menu do |n|
           - n.item 'Team', page_path('team')
+          - n.item t('timetable'), page_path('plan')
         = semantic_navigation :language_menu do |n|
           - n.item fa_icon(:globe, text: t(:switch_language)), switch_language_url
 

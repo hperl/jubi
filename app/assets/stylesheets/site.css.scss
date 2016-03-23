@@ -230,7 +230,7 @@ a.button.header-button {
 }
 
 
-.zeitplan {
+.timetable {
   @include grid-row($behavior: collapse);
   .day {
     @media #{$medium-up} {
@@ -266,28 +266,28 @@ a.button.header-button {
         @include radius();
       }
       .workshop {
-        background-color: $royal-purple;
-        border: 2px solid $royal-purple;
+          background-color: $royal-purple;
+          border: 2px solid $royal-purple;
       }
       .meal {
-        background-color: $royal-purple;
-        border: 2px solid $royal-purple;
+          background-color: gray;
+          border: 2px solid gray;
       }
       .social, .tournament {
-        background-color: $royal-purple;
-        border: 2px solid $royal-purple;
+          background-color: $royal-purple;
+          border: 2px solid $royal-purple;
       }
       .party {
-        background-color: $royal-purple;
-        border: 2px solid $royal-purple;
+          background-color: $royal-purple;
+          border: 2px solid $royal-purple;
       }
       .plenum {
-        background-color: $royal-purple;
-        border: 2px solid $royal-purple;
+          background-color: $royal-purple;
+          border: 2px solid $royal-purple;
       }
       .other {
-        background-color: gray;
-        border: 2px solid gray;
+          background-color: gray;
+          border: 2px solid gray;
       }
 
 

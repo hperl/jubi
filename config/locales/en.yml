@@ -1,0 +1,16 @@
+en:
+  date:
+    formats:
+      weekday: ! '%A'
+      default: ! '%d.%m.%Y'
+      long: ! '%e. %B %Y'
+      short: ! '%e. %b'
+  time:
+    am: A.M.
+    formats:
+      default: ! '%A, %d. %B %Y, %H:%M h'
+      long: ! '%A, %d. %B %Y, %H:%M h'
+      short: ! '%d. %B, %H:%M h'
+      time: ! '%H:%M h'
+      short_time: ! '%H:%M'
+    pm: P.M.

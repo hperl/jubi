@@ -1,0 +1,26 @@
+- content_for :title do
+  = t 'timetable'
+
+%section.content
+  %article
+    %h1= t 'timetable'
+    %p.lead= t 'timetable-introduction'
+    .timetable
+      - for day, timeslots in Timeslot.where("kind != ?", Timeslot.kinds[:helper_shift]).all.order(start: :asc).group_by { |ts| ts.start.to_date }
+        .day
+          %h2= l day, format: :weekday
+          .timeslots
+            - for time, timeslots in timeslots.group_by { |ts| ts.start }
+              - timeslots.each_index do |i|
+                - timeslot = timeslots[i]
+                - colwidth = width = 100/timeslots.length
+                - width += 1 if timeslots.length > 1
+                - colwidth -= 1 if timeslots.length > 1
+                %p.timeslot{:data => {:start => timeslot.start.hour + timeslot.start.min / 60.0, :end => timeslot.end.hour + timeslot.end.min / 60.0},
+                            :class => timeslot.kind,
+                            :style => "width: #{colwidth}%; left: #{width * i}%"}
+                  %strong= timeslot.send("name_#{I18n.locale}")
+                  %br
+                  = l timeslot.start, format: :short_time
+                  —
+                  = l timeslot.end, format: :time

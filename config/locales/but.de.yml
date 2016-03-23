@@ -1,6 +1,10 @@
 de:
   anniversary: Jubiläum 2017
   switch_language: Switch to English
+  back: zurück
+
+  timetable: Zeitplan
+  timetable-introduction: Hier findest du den Zeitplan des 60 Jubiläums 2017.
 
   # payment state
   cancelled_without_costs: kostenlos storniert
@@ -42,7 +46,7 @@ de:
   checkout_sa: Samstag
   checkout_so: Sonntag
 
-  checkin_9:   9:00 Uhr
+  checkin_9:   9:00 Uhee
   checkin_10: 10:00 Uhr
   checkin_11: 11:00 Uhr
   checkin_12: 12:00 Uhr
