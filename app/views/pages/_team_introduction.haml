@@ -1,6 +1,8 @@
 %li
   %h2= name
   %p
+    = image_tag "team/300/#{name.underscore}.jpeg", class: 'th'
+  %p
     %strong
       = succeed ":" do
         = t('team.job', count: t("team.#{name}.job").count)

@@ -6,11 +6,12 @@
     %hgroup
       %h1= t('team.meet the team')
 
+    = image_tag 'team/team.jpeg'
+
     .team-introduction
       %ul
         = render partial: 'team_introduction', locals: {name: 'Alex Senger'}
         = render partial: 'team_introduction', locals: {name: 'Cornelius Görres'}
-        = render partial: 'team_introduction', locals: {name: 'Felix Naumann'}
         = render partial: 'team_introduction', locals: {name: 'Gerrit Rüdebusch'}
         = render partial: 'team_introduction', locals: {name: 'Henning Perl'}
         = render partial: 'team_introduction', locals: {name: 'Marlena Schultz-Brunn'}
@@ -19,6 +20,5 @@
         = render partial: 'team_introduction', locals: {name: 'Simon Born'}
         = render partial: 'team_introduction', locals: {name: 'Simone Stepp'}
         = render partial: 'team_introduction', locals: {name: 'Stefan Timmermann'}
-        = render partial: 'team_introduction', locals: {name: 'Theresa Veer'}
         = render partial: 'team_introduction', locals: {name: 'Yannic Schelletter'}
 
