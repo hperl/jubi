@@ -50,10 +50,6 @@ group :development do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'capistrano', '~> 3.2'
-  gem 'capistrano-rails', require: false
-  gem 'capistrano3-unicorn', require: false
-  gem 'capistrano-bundler', require: false
   gem 'sqlite3'
   gem 'spring'
 end
@@ -62,6 +58,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', require: false
   gem 'rspec-activemodel-mocks'
+  gem 'capistrano', '~> 3.2'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano3-unicorn', require: false
+  gem 'capistrano-bundler', require: false
 end
 
 # assets
