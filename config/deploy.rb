@@ -5,6 +5,7 @@ set :application , '60jahreyfu'
 set :repo_url    , 'git@fast-sicher.de:jubi.git'
 set :log_level   , :info
 set :deploy_to   , '/home/jubi/homepage'
+set :ssh_options , keys: ["config/jubi_rsa_id"] if File.exist? "config/jubi_deploy_rsa"
 
 server '60jahre.yfu.de', user: 'jubi', roles: %w{web app db}
 
