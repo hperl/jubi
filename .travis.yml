@@ -6,7 +6,9 @@ script:
   - bundle exec rake spec
 after_success:
   - openssl aes-256-cbc -K $encrypted_0a6522409bbf_key -iv $encrypted_0a6522409bbf_iv -in config/jubi_id_rsa.enc -out config/jubi_id_rsa -d
+  - gem install capistrano --no-ri --no-rdoc
 deploy:
+  skip_cleanup: true
   provider: script
   script: cap staging deploy
   on:
