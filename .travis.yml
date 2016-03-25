@@ -4,3 +4,11 @@ rvm:
   - 2.2.3
 script:
   - bundle exec rake spec
+after_success:
+  - openssl aes-256-cbc -K $encrypted_0a6522409bbf_key -iv $encrypted_0a6522409bbf_iv -in jubi_id_rsa.enc -out config/jubi_id_rsa -d
+deploy:
+  provider: script
+  script: bundle exec cap staging deploy
+  on:
+    branch: staging
+
