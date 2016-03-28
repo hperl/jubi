@@ -22,4 +22,8 @@ class Timeslot < ActiveRecord::Base
   def overlaps?(other)
     (self.start+1.second..self.end).overlaps?(other.start+1.second..other.end)
   end
+
+  def open_end?
+    return !!self.end && self.end.time.hour == 23 && self.end.time.min == 59
+  end
 end
