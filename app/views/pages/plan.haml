@@ -22,7 +22,7 @@
                   %strong= timeslot.send("name_#{I18n.locale}")
                   %br
                   = l timeslot.start, format: :short_time
-                  —
+                  –
                   - if timeslot.open_end?
                     = "open end"
                   - else
