@@ -28,6 +28,14 @@ task :update_code do
   end
 end
 
+task :seed do
+  on roles(:all) do |host|
+    within deploy_to do
+      execute 'docker-compose', 'run', '--rm', fetch(:stage), 'rake db:seed'
+    end
+  end
+end
+
 task :build do
   on roles(:all) do |host|
     within deploy_to do
