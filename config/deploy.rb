@@ -84,7 +84,7 @@ end
 task :stop do
   on roles(:all) do |host|
     within deploy_to do
-      execute 'docker-compose', '-f deploy.yml', 'stop'
+      execute 'docker-compose', 'stop'
     end
   end
 end
@@ -92,7 +92,7 @@ end
 task :start do
   on roles(:all) do |host|
     within deploy_to do
-      execute 'docker-compose', '-f deploy.yml', 'up -d'
+      execute 'docker-compose', 'up -d'
     end
   end
 end
@@ -100,7 +100,7 @@ end
 task :restart do
   on roles(:all) do |host|
     within deploy_to do
-      execute 'docker-compose', '-f deploy.yml', 'restart web'
+      execute 'docker-compose', 'restart', fetch(:stage)
     end
   end
 end
