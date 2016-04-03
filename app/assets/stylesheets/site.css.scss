@@ -367,7 +367,7 @@ dl.sub-nav dd a { text-decoration: none; }
   ul {
     @include block-grid(1);
     @media #{$medium-up} {
-      @include block-grid(3);
+      @include block-grid(4);
     }
   }
   blockquote {
