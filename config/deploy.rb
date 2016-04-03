@@ -14,6 +14,7 @@ task :deploy do
     invoke 'update_code'
     invoke 'build'
     invoke 'start_container'
+    invoke 'restart'
   end
 end
 
