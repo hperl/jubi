@@ -87,7 +87,7 @@ Timeslot.create(name_de:  'Mittagessen', name_en: 'Lunch',
                 end:   DateTime.parse('2017-06-17 14:00 +0200'))
 Timeslot.create(name_de:  'Festakt', name_en: 'Anniversary Reception',
                 kind:  :social,
-                start: DateTime.parse('2017-06-17 14:00 +0200'),
+                start: DateTime.parse('2017-06-17 15:00 +0200'),
                 end:   DateTime.parse('2017-06-17 17:00 +0200'))
 Timeslot.create(name_de:  'Abendessen (individuell)', name_en: 'Dinner (on your own)',
                 kind:  'meal',
