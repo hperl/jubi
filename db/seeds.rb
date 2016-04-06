@@ -67,8 +67,8 @@ Timeslot.create(name_de:  'Abendessen', name_en: 'Dinner',
                 kind:  :meal,
                 start: DateTime.parse('2017-06-16 18:00 +0200'),
                 end:   DateTime.parse('2017-06-16 20:00 +0200'))
-Timeslot.create(name_de:  'After-Workshops', name_en: 'After-Workshops',
-                kind:  :workshop,
+Timeslot.create(name_de:  'Exchange Stories Make an Impact', name_en: 'Exchange Stories Make an Impact',
+                kind:  :social,
                 start: DateTime.parse('2017-06-16 20:00 +0200'),
                 end:   DateTime.parse('2017-06-16 23:00 +0200'))
 
@@ -99,7 +99,7 @@ Timeslot.create(name_de:  'Party', name_en: 'Anniversary Party',
                 end:   DateTime.parse('2017-06-17 23:59 +0200'))
 
 # Sonntag
-Timeslot.create(name_de:  'Frühstück', name_en: 'Breakfast',
+Timeslot.create(name_de:  'Frühstück + Lunchpakete', name_en: 'Breakfast + Lunch bags',
                 kind:  :meal,
                 start: DateTime.parse('2017-06-18  7:30 +0200'),
                 end:   DateTime.parse('2017-06-18  9:30 +0200'))
@@ -107,14 +107,10 @@ Timeslot.create(name_de:  'Abschiedsplenum', name_en: 'Farewell Plenary',
                 kind:  :plenum,
                 start: DateTime.parse('2017-06-18 11:00 +0200'),
                 end:   DateTime.parse('2017-06-18 12:00 +0200'))
-Timeslot.create(name_de:  'Lunchpakete', name_en: 'Lunch bags',
-                kind:  :meal,
-                start: DateTime.parse('2017-06-18 12:00 +0200'),
-                end:   DateTime.parse('2017-06-18 14:00 +0200'))
 Timeslot.create(name_de:  'Abreise', name_en: 'Departure',
                 kind:  :other,
                 start: DateTime.parse('2017-06-18 12:00 +0200'),
-                end:   DateTime.parse('2017-06-18 14:00 +0200'))
+                end:   DateTime.parse('2017-06-18 13:00 +0200'))
 
 # Helferschichten
 
