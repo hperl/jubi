@@ -191,11 +191,11 @@ de:
   time:
     am: vormittags
     formats:
-      default: ! '%A, %d. %B %Y, %H:%M Uhr'
-      long: ! '%A, %d. %B %Y, %H:%M Uhr'
-      short: ! '%d. %B, %H:%M Uhr'
-      time: ! '%H:%M Uhr'
-      short_time: ! '%H:%M'
+      default: ! '%A, %d. %B %Y, %H.%M Uhr'
+      long: ! '%A, %d. %B %Y, %H.%M Uhr'
+      short: ! '%d. %B, %H.%M Uhr'
+      time: ! '%H.%M Uhr'
+      short_time: ! '%H.%M'
     pm: nachmittags
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
