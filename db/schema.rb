@@ -58,20 +58,6 @@ ActiveRecord::Schema.define(version: 20160323110636) do
   add_index "but_registrations_timeslots", ["but_registration_id"], name: "index_but_registrations_timeslots_on_but_registration_id", using: :btree
   add_index "but_registrations_timeslots", ["timeslot_id"], name: "index_but_registrations_timeslots_on_timeslot_id", using: :btree
 
-  create_table "conference_registrations", force: :cascade do |t|
-    t.datetime "arrival",                   null: false
-    t.datetime "departure",                 null: false
-    t.integer  "accomodation", default: 0,  null: false
-    t.integer  "room_mates",   default: 0,  null: false
-    t.integer  "diet",         default: 0,  null: false
-    t.text     "diet_other",   default: "", null: false
-    t.text     "comment"
-    t.integer  "person_id"
-    t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
   create_table "groups", force: :cascade do |t|
     t.string  "name"
     t.integer "owner_id"
@@ -90,33 +76,12 @@ ActiveRecord::Schema.define(version: 20160323110636) do
     t.datetime "updated_at"
   end
 
-  create_table "party_registrations", force: :cascade do |t|
-    t.integer  "person_id"
-    t.integer  "user_id"
-    t.text     "music_wishes"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "payments", force: :cascade do |t|
     t.integer  "amount_in_cents",     default: 0
     t.integer  "user_id"
     t.integer  "responsible_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "people", force: :cascade do |t|
-    t.string   "name",                       null: false
-    t.text     "address",                    null: false
-    t.string   "nickname"
-    t.boolean  "visible",    default: false, null: false
-    t.integer  "age"
-    t.integer  "lg",         default: 0,     null: false
-    t.integer  "user_id",                    null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "gender",     default: 0,     null: false
   end
 
   create_table "timeslots", force: :cascade do |t|
