@@ -32,7 +32,7 @@
         = semantic_navigation :language_menu do |n|
           - n.item fa_icon(:globe, text: t(:switch_language)), switch_language_url
 
-  %main
+  %main.main
     - if flash[:notice] || flash[:warning] || flash[:alert]
       %section.flash
         - if flash[:notice]
