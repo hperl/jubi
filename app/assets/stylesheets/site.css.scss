@@ -15,7 +15,7 @@ header {
 }
 
 main.main {
-    padding-top: rem-calc(30);
+    /* padding-top: rem-calc(30); */
     padding-bottom: rem-calc(100);
     background: #fff;
 }
@@ -50,30 +50,31 @@ main.main {
     }
 }
 
-section.content, section.flash {
+section {
     @include grid-row($behavior: false);
 
     & > article, & > hgroup, & > aside.sidebar {
         @include grid-column(12);
     }
 
+    & > .rounded-image {
+        @include grid-column(12);
+    }
+
     .two-thirds {
         @media #{$medium-up} {
         @include grid-column(8);
-    }
-    }
+    }}
 
     .half {
         @media #{$medium-up} {
         @include grid-column(6);
-    }
-    }
+    }}
 
-    .narrow {
+    .narrow, .one-third {
         @media #{$medium-up} {
         @include grid-column(4);
-    }
-    }
+    }}
 
     aside.fixed-sidebar {
         @media #{$medium-up} {
