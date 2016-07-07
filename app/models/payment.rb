@@ -1,3 +1,10 @@
+# This is a bank payment that is created by a staff after a user has transfered
+# money to the YFU bank account.
+#
+# TODO this should probably be renamed to BankPayment or WirePayment, so that we
+# can add other methods to pay, i.e. by credit card.
+# The general methods can then be factored out into a Payment concern.
+
 class Payment < ActiveRecord::Base
   belongs_to :user
   belongs_to :responsible_user, class_name: User
@@ -6,7 +13,7 @@ class Payment < ActiveRecord::Base
   validate :user_present
   validates :responsible_user, presence: true
 
-  after_save :mark_users_but_registrations_as_payed
+  after_save :mark_users_registrations_as_payed
 
   def amount
     amount_in_cents.to_d / 100
@@ -23,7 +30,7 @@ class Payment < ActiveRecord::Base
     end
   end
 
-  def mark_users_but_registrations_as_payed
+  def mark_users_registrations_as_payed
     user.mark_registrations_as_payed
   end
 end

@@ -101,24 +101,34 @@ RSpec.describe User do
     end
 
     # TODO commented out for now, implement payment functionality in Registerable!
-    # describe "mark registrations as payed" do
-    #   context "User has no money" do
-    #     it "does not mark registrations as payed" do
-    #       reg = Registration.create!({name: "bla", address: "12345", sex: 0, age: 100, t_shirt_size: "Männerschnitt S", state: 0})
-    #       user = stub_model(User, registrations: [reg])
-    #       user.mark_registrations_as_payed
-    #       reg.state.should eq('unpayed')
-    #     end
-    #   end
+    describe "mark registrations as payed" do
+      let :registrations do
+        [stub_model(ConferenceRegistration), stub_model(PartyRegistration)]
+      end
+      let :user do
+        stub_model(User, registrations: registrations) 
+      end
 
-    #   context "User has money for all registrations" do
-    #     it "does not mark registrations as payed" do
-    #       reg = ButRegistration.create!({name: "bla", address: "12345", sex: 0, age: 100, t_shirt_size: "Männerschnitt S", state: 0})
-    #       user = stub_model(User, balance: 0, registrations: [reg])
-    #       user.mark_registrations_as_payed
-    #       reg.state.should eq('payed')
-    #     end
-    #   end
+      context "User has no money" do
+        it "does not mark registrations as payed" do
+          user.mark_registrations_as_payed
+
+          registrations.each { |r| expect(r.state).to eq 'unpayed' }
+        end
+      end
+
+      context "User has money for all registrations" do
+        it "marks registrations as payed" do
+          registrations.each do |registration|
+            user.payments << Payment.new(amount_in_cents: registration.price * 100)
+          end
+          user.mark_registrations_as_payed
+
+          registrations.each { |r| expect(r.state).to eq 'payed' }
+        end
+      end
+    end
+
 
     #   context "User has money for some registrations" do
     #     it "does not mark registrations as payed" do

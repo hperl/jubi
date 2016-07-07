@@ -5,7 +5,8 @@ karma:
   helper_shift: 1
 prices:
   early_bird: -5.00
-  registration: 95.00
+  conference_registration: 95.00
+  party_registration: 10.00
   first_day: 25.00
   other_days: 20.00
   tshirt: 0.00
