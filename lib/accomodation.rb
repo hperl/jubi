@@ -4,7 +4,8 @@ module Accomodation
     return [
       Accomodation::Dorm,
       Accomodation::DoubleRoom,
-      Accomodation::SingleRoom
+      Accomodation::SingleRoom,
+      Accomodation::NoRoom
     ]
   end
   module_function :all
@@ -17,9 +18,14 @@ module Accomodation
     def self.label
       self.name.demodulize.underscore
     end
+
+    def self.rooms_left
+      Settings.room_allocations[self.label]
+    end
   end
 
   class DoubleRoom < Base; end
   class SingleRoom < Base; end
   class Dorm       < Base; end
+  class NoRoom     < Base; end
 end

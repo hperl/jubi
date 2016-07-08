@@ -61,13 +61,7 @@
         %p
           %label Ich möchte schlafen in einem ...
           .radios
-            -# = enum_radio_buttons(f, :accomodation, {disabled: lambda{|e| e.first == 'acc_family' || e.first == 'acc_single' || e.first == 'acc_double'} }) { |a| |
-            -#     s = "#{t(a)} (+ #{number_to_currency @conference_registration.room_prices[a]})".html_safe; |
-            -#     if a == 'acc_family' || a == 'acc_single' || a == 'acc_double'; |
-            -#       s = '<span class="label">ausgebucht</span> '.html_safe + s; |
-            -#     end; |
-            -#     s; |
-            -#   } |
+            = f.collection_radio_buttons(:accomodation, Accomodation.all.map{|a| [a, "#{t(a.label)} (#{a.rooms_left} #{t('rooms_left')})"]}, :first, :last)
 
         %p#together-with
           %label ... zusammen mit ...

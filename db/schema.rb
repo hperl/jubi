@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707152120) do
+ActiveRecord::Schema.define(version: 20160708125625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,18 +59,18 @@ ActiveRecord::Schema.define(version: 20160707152120) do
   add_index "but_registrations_timeslots", ["timeslot_id"], name: "index_but_registrations_timeslots_on_timeslot_id", using: :btree
 
   create_table "conference_registrations", force: :cascade do |t|
-    t.datetime "arrival",                   null: false
-    t.datetime "departure",                 null: false
-    t.integer  "accomodation", default: 0,  null: false
-    t.integer  "room_mates",   default: 0,  null: false
-    t.integer  "diet",         default: 0,  null: false
-    t.text     "diet_other",   default: "", null: false
+    t.datetime "arrival",                    null: false
+    t.datetime "departure",                  null: false
+    t.string   "accomodation", default: "no_room", null: false
+    t.integer  "room_mates",   default: 0,   null: false
+    t.integer  "diet",         default: 0,   null: false
+    t.text     "diet_other",   default: "",  null: false
     t.text     "comment"
     t.integer  "person_id"
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "state",        default: 0,  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "state",        default: 0,   null: false
   end
 
   create_table "groups", force: :cascade do |t|

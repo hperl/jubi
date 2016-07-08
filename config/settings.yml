@@ -17,11 +17,18 @@ prices:
     4: -15.00
   rooms:
     dorm: 0.00
-    none: 0.00
+    no_room: 0.00
     dorm_with_bath: 5.00
-    double: 15.00
-    family: 15.00
-    single: 20.00
+    double_room: 15.00
+    family_room: 15.00
+    single_room: 20.00
+room_allocations:
+  dorm: 100
+  no_room: '∞'
+  dorm_with_bath: 100
+  double_room: 100
+  family_room: 100
+  single_room: 100
 dates:
   early_bird_registration_passed: 2015-01-01
   registrations_frozen: 2015-04-15

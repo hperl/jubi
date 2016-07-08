@@ -40,3 +40,5 @@ en:
   other_transportation: "keine Angabe"
   public_transportation: "mit öffentlichen Verkehrsmitteln"
   car: "mit dem Auto"
+
+  rooms_left: 'rooms left'

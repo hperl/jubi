@@ -8,7 +8,6 @@ class ConferenceRegistration < ActiveRecord::Base
   validates :arrival, :departure, presence: true
 
   enum diet: %w(eats_everything vegetarian vegan lactose_free other_diet)
-  enum accomodation: %w(acc_dorm acc_dorm_with_bath acc_double acc_family acc_single acc_none)
   enum room_mates:
     %w(room_mates_none room_mates_group room_mates_other_registrations)
   enum sex: %w(sex_other sex_male sex_female)
@@ -16,6 +15,17 @@ class ConferenceRegistration < ActiveRecord::Base
 
   def price
     Settings.prices.conference_registration
+  end
+
+  def accomodation=(new_accomodation)
+    # just store the label of the accomodation
+    write_attribute(:accomodation, new_accomodation.label)
+  end
+
+  def accomodation
+    # return the class from the label
+    label = read_attribute(:accomodation)
+    return "Accomodation::#{label.classify}".constantize
   end
 
   private

@@ -22,12 +22,12 @@ de:
   grillen: Grillen
   ersthelfer: Ersthelfer
 
-  acc_dorm: Mehrbettzimmer mit Bad auf dem Flur
-  acc_dorm_with_bath: Mehrbettzimmer mit eigenem Bad
-  acc_double: Doppelzimmer
-  acc_single: Einzelzimmer
-  acc_family: Familienzimmer
-  acc_none: Ich bin Tagesgast und brauche keine Unterkunft
+  dorm: Mehrbettzimmer mit Bad auf dem Flur
+  dorm_with_bath: Mehrbettzimmer mit eigenem Bad
+  double_room: Doppelzimmer
+  single_room: Einzelzimmer
+  family_room: Familienzimmer
+  no_room: Ich bin Tagesgast und brauche keine Unterkunft
 
   sex_male: männlich
   sex_female: weiblich
@@ -40,3 +40,5 @@ de:
   other_transportation: "keine Angabe"
   public_transportation: "mit öffentlichen Verkehrsmitteln"
   car: "mit dem Auto"
+
+  rooms_left: 'übrig'
