@@ -2,7 +2,7 @@
 require 'rails_helper'
 require 'pry'
 
-RSpec.describe User do
+describe User do
   describe "registrations" do
     context "with one party and one conference registration" do
       subject(:user) do

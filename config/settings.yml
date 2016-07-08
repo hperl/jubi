@@ -16,12 +16,12 @@ prices:
     3: -10.00
     4: -15.00
   rooms:
-    acc_dorm: 0.00
-    acc_none: 0.00
-    acc_dorm_with_bath: 5.00
-    acc_double: 15.00
-    acc_family: 15.00
-    acc_single: 20.00
+    dorm: 0.00
+    none: 0.00
+    dorm_with_bath: 5.00
+    double: 15.00
+    family: 15.00
+    single: 20.00
 dates:
   early_bird_registration_passed: 2015-01-01
   registrations_frozen: 2015-04-15
