@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe Accomodation::Base do
+describe Accomodation do
   describe '#all' do
     it 'gets all accomodations' do
       expect(Accomodation.all).to eq [
