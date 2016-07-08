@@ -1,6 +1,6 @@
 features:
   #all: true
-  login: false
+  login: true
   workshops: false
   workshop_choices: false
   motto: false

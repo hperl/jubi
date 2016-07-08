@@ -1,0 +1,16 @@
+features:
+  #all: true
+  login: true
+  workshops: false
+  workshop_choices: false
+  motto: false
+  haus: false
+  zeitplan: false
+  team: false
+  mithelfen: false
+  help: false
+  music_wishes: false
+  algorithm: false
+  no_more_registrations: false
+  final_workshop_choices: false
+  photos: false
