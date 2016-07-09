@@ -61,7 +61,7 @@
         %p
           %label Ich möchte schlafen in einem ...
           .radios
-            = f.collection_radio_buttons(:accomodation, Accomodation.all.map{|a| [a, "#{t(a.label)} (#{a.rooms_left} #{t('rooms_left')})"]}, :first, :last)
+            = f.collection_radio_buttons(:accomodation, Accomodation.all.map{|a| [a.label, "#{t(a.label)} (#{a.rooms_left} #{t('rooms_left')})"]}, :first, :last)
 
         %p#together-with
           %label ... zusammen mit ...
@@ -145,26 +145,50 @@
         %p
           = f.text_area :comment
 
-  -# .row
-  -#   %h2.subheader Kosten
-  -#   %p Für eine detailierte Erklärung siehe #{link_to 'Preise', page_path('preise')}.
-  -#   %table
-  -#     %tr.no-toddlers
-  -#       %th Grundgebühr Registrierung
-  -#       %td.right#registrationPrice= number_to_currency @conference_registration.registration_price
-  -#     %tr.no-toddlers
-  -#       %th Zimmeraufschlag
-  -#       %td.right#roomPrice= number_to_currency @conference_registration.room_prices.acc_dorm
-  -#     %tr.no-toddlers
-  -#       %th Fahrtkostenumlage
-  -#       %td.right#categoryPrice
-  -#     %tr.no-toddlers
-  -#       %th Frühbucherrabatt
-  -#       %td.right#categoryPrice= number_to_currency @conference_registration.early_bird_price
-  -#     %tr
-  -#       %th Gesamtpreis
-  -#       %td.right
-  -#         %strong#totalPrice
+  .row
+    %h2.subheader Kosten
+    %p Für eine detailierte Erklärung siehe #{link_to 'Preise', page_path('preise')}.
+    %table
+      %tr.no-toddlers
+        %th Grundgebühr Registrierung
+        %td.right#registrationPrice= number_to_currency Settings.prices.conference_registration
+      %tr.no-toddlers
+        %th Zimmeraufschlag
+        %td.right#roomPrice
+      %tr.no-toddlers
+        %th Fahrtkostenumlage
+        %td.right#categoryPrice
+      %tr.no-toddlers
+        %th Frühbucherrabatt
+        %td.right#categoryPrice
+      %tr
+        %th Gesamtpreis
+        %td.right
+          %strong#totalPrice
 
   - unless @conference_registration.frozen?
     = f.button :submit
+
+:javascript
+  var prices = #{Settings.prices.to_json};
+  $(function(){
+    var numberToCurrency = function(number) {
+      return number + ",00 €";
+    }
+    var recalculatePrices = function() {
+      console.log('recalc prices');
+
+      var data = $('form').serializeArray();
+      var roomPrice;
+      $.each(data, function(i, obj) {
+        console.log(obj);
+        if (obj.name == 'conference_registration[accomodation]') {
+          var roomChoice = obj.value;
+          roomPrice = numberToCurrency(window.prices.rooms[roomChoice]);
+        }
+      })
+
+      $('#roomPrice').text(roomPrice);
+    }
+    $('form').change(recalculatePrices);
+  });

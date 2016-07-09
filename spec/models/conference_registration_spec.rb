@@ -35,9 +35,15 @@ RSpec.describe ConferenceRegistration, type: :model do
     it { should_not be_valid }
   end
 
-  describe '#accomodation' do
+  describe '#accomodation=' do
     it 'serializes the accomodation in the db' do
       subject.accomodation = Accomodation::Dorm
+      subject.save!
+      expect(subject.accomodation).to be Accomodation::Dorm
+    end
+
+    it 'also handles string values' do
+      subject.accomodation = 'Accomodation::Dorm'
       subject.save!
       expect(subject.accomodation).to be Accomodation::Dorm
     end

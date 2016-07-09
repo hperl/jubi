@@ -18,6 +18,10 @@ class ConferenceRegistration < ActiveRecord::Base
   end
 
   def accomodation=(new_accomodation)
+    # convert to class if we got passed a string
+    unless new_accomodation.respond_to? 'label'
+      new_accomodation = new_accomodation.constantize
+    end
     # just store the label of the accomodation
     write_attribute(:accomodation, new_accomodation.label)
   end

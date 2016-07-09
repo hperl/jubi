@@ -41,7 +41,7 @@ $(function(){
     $.each(el, function(i) {
       CKEDITOR.replace(el[i].id);
     });
-  }
+      }
 
   // loading state
   $('body').on('ajax:send', function(xhr) { $(xhr.target).addClass('loading') });
