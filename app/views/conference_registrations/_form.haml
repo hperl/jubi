@@ -61,7 +61,7 @@
         %p
           %label Ich möchte schlafen in einem ...
           .radios
-            = f.collection_radio_buttons(:accomodation, Accomodation.all.map{|a| [a.label, "#{t(a.label)} (#{a.rooms_left} #{t('rooms_left')})"]}, :first, :last)
+            = f.collection_radio_buttons(:accomodation, Accomodation.all.map { |a| [a, "#{t(a.label)} (#{a.rooms_left} #{t('rooms_left')})"]}, :first, :last)
 
         %p#together-with
           %label ... zusammen mit ...
@@ -155,12 +155,6 @@
       %tr.no-toddlers
         %th Zimmeraufschlag
         %td.right#roomPrice
-      %tr.no-toddlers
-        %th Fahrtkostenumlage
-        %td.right#categoryPrice
-      %tr.no-toddlers
-        %th Frühbucherrabatt
-        %td.right#categoryPrice
       %tr
         %th Gesamtpreis
         %td.right
@@ -191,4 +185,5 @@
       $('#roomPrice').text(roomPrice);
     }
     $('form').change(recalculatePrices);
+    recalculatePrices();
   });

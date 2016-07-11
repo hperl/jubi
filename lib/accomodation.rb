@@ -12,7 +12,7 @@ module Accomodation
 
   class Base
     def self.price
-      Settings.prices.rooms[self.label]
+      Settings.prices.rooms[self.name]
     end
 
     def self.label
@@ -20,7 +20,7 @@ module Accomodation
     end
 
     def self.rooms_left
-      Settings.room_allocations[self.label]
+      Settings.room_allocations[self.name]
     end
   end
 

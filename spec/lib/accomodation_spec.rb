@@ -26,19 +26,19 @@ describe Accomodation do
 
     describe '#price' do
       it 'looks up the price in the settings' do
-        Settings.prices.rooms.test_accomodation = 42.42
+        Settings.prices.rooms['TestAccomodation'] = 42.42
         expect(TestAccomodation.price).to eq 42.42
       end
     end
 
     describe '#rooms_left' do
       it 'looks up the rooms left from the settings substracted by the booked rooms' do
-        Settings.room_allocations.test_accomodation = 100
+        Settings.room_allocations['TestAccomodation'] = 100
         expect(TestAccomodation.rooms_left).to eq 100
       end
 
       it 'handles infinite rooms left' do
-        Settings.room_allocations.test_accomodation = '∞'
+        Settings.room_allocations['TestAccomodation'] = '∞'
         expect(TestAccomodation.rooms_left).to eq '∞'
       end
     end
