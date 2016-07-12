@@ -1,12 +1,12 @@
 - content_for :title do
   = t('team.meet the team')
 
-%section.content
-  %article
-    %hgroup
-      %h1= t('team.meet the team')
+%section.header
+  = header_image 'team/team-header.jpg'
 
-    = image_tag 'team/team.jpeg'
+%section.content
+  %h1.logo-like
+    %strong= t('team.meet the team')
 
     .team-introduction
       %ul
