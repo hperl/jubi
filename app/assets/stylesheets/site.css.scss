@@ -50,7 +50,12 @@ main.main {
     }
 }
 
-section {
+section.header {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+section.content, section.flash {
     @include grid-row($behavior: false);
 
     & > article, & > hgroup, & > aside.sidebar {
@@ -381,6 +386,8 @@ dl.sub-nav dd a { text-decoration: none; }
 }
 
 .logo-like {
+    @include grid-column(12);
+
     text-align: center;
     color: $royal-purple;
     font-size: rem-calc(60);

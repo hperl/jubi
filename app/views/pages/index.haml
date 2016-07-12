@@ -1,5 +1,5 @@
 
-%section
+%section.header
   .rounded-image(style="position:relative")
     %svg(style="position:absolute; left: 0; bottom: 0" width="100%" height="34%" preserveAspectRatio="none" viewBox="0 0 10 4" xmlns="http://www.w3.org/2000/svg")
       %path(d="M 0 10 L 0 0 Q 5 5, 10 0 L 10 10 Z" fill="white")
@@ -7,28 +7,27 @@
     = image_tag 'header.jpg'
 
 %section.content
-  %article
-    %h1.logo-like
-      %strong Das Jubiläum
-    .one-third
-      %h2 Wann?
-      = image_tag 'otto-braun-saal.jpg'
-      Text
-    .one-third
-      %h2 Wo?
-      = image_tag 'juhe.jpg'
-      Text
-    .one-third
-      %h2 Was?
-      = image_tag 'staatsbibliothek.jpg'
-      Text
+  %h1.logo-like
+    %strong= t 'The anniversary'
+  .one-third
+    %h2 #{t('when').titleize}?
+    = image_tag 'otto-braun-saal.jpg'
+    Text
+  .one-third
+    %h2 #{t('where').titleize}?
+    = image_tag 'juhe.jpg'
+    Text
+  .one-third
+    %h2 #{t('what').titleize}?
+    = image_tag 'staatsbibliothek.jpg'
+    Text
 
 %hr
 
 %section.content
+  %h1.logo-like
+    %strong Teaser
   %article
-    %h1.logo-like
-      %strong Teaser
     .row
       .flex-video
         %iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F60JahreYFU%2Fvideos%2Fvb.536752813165935%2F569131216594761%2F%3Ftype%3D3&show_text=0&width=560" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true")
@@ -36,27 +35,25 @@
 %hr
 
 %section.content
-  %article
-    %h1.logo-like
-      %strong Das Motto
-    %h1.logo-like
-      <b>exchange</b> stories<br>
-      make an <b>impact</b>
-    .one-third
-      %h2 <b>exchange</b> stories
-      = markdown t('index.exchange stories.text')
-    .one-third
-      %h2 <b>exchange impact</b>
-      = markdown t('index.exchange stories make an impact.text')
-    .one-third
-      %h2 make an <b>impact</b>
-      = markdown t('index.make an impact.text')
+  %h1.logo-like
+    %strong= t 'The motto'
+  %h1.logo-like
+    <b>exchange</b> stories<br>
+    make an <b>impact</b>
+  .one-third
+    %h2 <b>exchange</b> stories
+    = markdown t('index.exchange stories.text')
+  .one-third
+    %h2 <b>exchange impact</b>
+    = markdown t('index.exchange stories make an impact.text')
+  .one-third
+    %h2 make an <b>impact</b>
+    = markdown t('index.make an impact.text')
 
 %hr
 
 %section.content
-  %article
-    %h2.logo-like= t('index.we want you_html')
+  %h2.logo-like= t('index.we want you_html')
   %article.half
     %h2= t('index.program.title')
     = markdown t('index.program.text')
