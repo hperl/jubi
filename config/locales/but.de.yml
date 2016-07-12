@@ -6,6 +6,9 @@ de:
   timetable: Zeitplan
   timetable-introduction: Hier findest du den Zeitplan des 60 Jubiläums 2017.
 
+  attributions: Bildnachweise
+  attributions-introduction: 'Wir nutzen auf dieser Website folgende Inhalte unter einer CreativeCommons-Lizenz:'
+
   # payment state
   cancelled_without_costs: kostenlos storniert
   cancelled: storniert
