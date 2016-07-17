@@ -66,6 +66,13 @@ section.content, section.flash {
         @include grid-column(12);
     }
 
+    .video-column {
+        @include grid-column(12);
+        @media #{$small-only} {
+            padding: 0;
+        }
+    }
+
     .two-thirds {
         @media #{$medium-up} {
         @include grid-column(8);
