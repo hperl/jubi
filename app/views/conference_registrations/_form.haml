@@ -8,11 +8,11 @@
             - for msg in @conference_registration.errors.full_messages
               %li= msg
 
-  .row
-    .medium-12.columns
-      .callout.panel
-        :markdown
-          Ab dem **#{l(Settings.dates.registrations_frozen)}** ist es nicht mehr möglich, die Anmeldung zu bearbeiten. Der Grund hierfür ist, dass wir danach gesammelt alle T-Shirts bestellen, Zimmer einteilen, Namensschilder drucken und vieles mehr für das BUT vorbereiten wollen und dafür einen finalen Stand brauchen.
+  -# .row
+  -#   .medium-12.columns
+  -#     .callout.panel
+  -#       :markdown
+  -#         Ab dem **#{l(Settings.dates.registrations_frozen)}** ist es nicht mehr möglich, die Anmeldung zu bearbeiten. Der Grund hierfür ist, dass wir danach gesammelt alle T-Shirts bestellen, Zimmer einteilen, Namensschilder drucken und vieles mehr für das BUT vorbereiten wollen und dafür einen finalen Stand brauchen.
 
 
   .row
@@ -165,25 +165,43 @@
 
 :javascript
   var prices = #{Settings.prices.to_json};
+
+  var numberToCurrency = function(number) {
+    return number + ",00 €";
+  }
+
+  var toDataObj = function(serializedForm) {
+    var result = {};
+    $.each(serializedForm, function(idx, obj) {
+      result[obj.name] = obj.value;
+    })
+    return result;
+  }
+
+  var recalculatePrices = function(data) {
+    var roomChoice = data['conference_registration[accomodation]'];
+    var roomPrice = numberToCurrency(window.prices.rooms[roomChoice]);
+    $('#roomPrice').text(roomPrice);
+  }
+
+  var toggleToddlers = function(data) {
+    var age = data["person[age]"];
+    if (age && age <= 3) {
+      $('.toddlers').show();
+      $('.no-toddlers').hide();
+    } else {
+      $('.toddlers').hide();
+      $('.no-toddlers').show();
+    }
+  }
+
+  var rerender = function() {
+    var data = toDataObj($('form').serializeArray());
+    recalculatePrices(data);
+    toggleToddlers(data);
+  }
+
   $(function(){
-    var numberToCurrency = function(number) {
-      return number + ",00 €";
-    }
-    var recalculatePrices = function() {
-      console.log('recalc prices');
-
-      var data = $('form').serializeArray();
-      var roomPrice;
-      $.each(data, function(i, obj) {
-        console.log(obj);
-        if (obj.name == 'conference_registration[accomodation]') {
-          var roomChoice = obj.value;
-          roomPrice = numberToCurrency(window.prices.rooms[roomChoice]);
-        }
-      })
-
-      $('#roomPrice').text(roomPrice);
-    }
-    $('form').change(recalculatePrices);
-    recalculatePrices();
+    $('form').change(rerender);
+    rerender()
   });
