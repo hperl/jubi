@@ -81,15 +81,15 @@ module ApplicationHelper
 
   def header_image(image_path)
     svg = content_tag(:svg, {
-    style: 'position:absolute; left: 0; bottom: 0', width: '100.1%',
-    height: '34%',
-    preserveAspectRatio: 'none',
-    viewBox: '0 0 10 4',
-    xmlns: 'http://www.w3.org/2000/svg'}) do
+      style: 'position:absolute; left: 0; bottom: 0', width: '100.1%',
+      height: '34%',
+      preserveAspectRatio: 'none',
+      viewBox: '0 0 10 4',
+      xmlns: 'http://www.w3.org/2000/svg'}) do
       tag(:path, d: 'M 0 10 L 0 0 Q 5 5, 10 0 L 10 10 Z', fill: 'white')
     end
     logo = image_tag('logo-header.png', width: '25%', style: 'position:absolute; left: 15%; bottom: 10%')
-    header_image = image_tag(image_path)
+    header_image = image_tag(image_path, width: '100%')
 
     content_tag :div, class: 'rounded-image', style: 'position:relative' do
       svg + logo + header_image
